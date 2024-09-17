@@ -1,0 +1,138 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+012|	Session.vim	/^normal! 012|$/;"	m
+020|	Session.vim	/^normal! 020|$/;"	m
+06|	Session.vim	/^normal! 06|$/;"	m
+A	LaTeX/subjects/algeoma/gdw/body.tex	/^\\subsection[Матриця A]{Матриця \\(A\\)}$/;"	b
+B	LaTeX/subjects/algeoma/gdw/body.tex	/^\\subsection[Матриця B]{Матриця \\(B\\)}$/;"	b
+BINTREE_H	bintree.h	/^#define BINTREE_H$/;"	d
+BINTREE_PRINT_FMT	bintree.h	/^#define BINTREE_PRINT_FMT /;"	d
+FOOD_H	food.h	/^#define FOOD_H$/;"	d
+FOOD_SIZE	food.h	/^#define FOOD_SIZE /;"	d
+GUI	LaTeX/subjects/ads/lab/body.tex	/^\\subsection{Опис GUI}$/;"	b
+LOG	mainwindow.h	/^#define LOG(/;"	d
+MAINWINDOW_H	mainwindow.h	/^#define MAINWINDOW_H$/;"	d
+MainWindow	mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent)$/;"	f	class:MainWindow
+MainWindow	mainwindow.h	/^class MainWindow : public QMainWindow$/;"	c
+SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
+Ui	mainwindow.h	/^namespace Ui { class MainWindow; }$/;"	n
+_drawTree	mainwindow.cpp	/^void MainWindow::_drawTree(node<nodeData>* leaf, node<nodeData>* neighbor, QGraphicsRectItem* parentRectItem, int side) {$/;"	f	class:MainWindow
+_printTree	mainwindow.cpp	/^void MainWindow::_printTree(node<nodeData>* leaf, QTreeWidgetItem* parentItem) {$/;"	f	class:MainWindow
+bintree	bintree.h	/^bintree<T>::bintree() {$/;"	f	class:bintree
+bintree	bintree.h	/^class bintree {$/;"	c
+code	LaTeX/subjects/amp/lab/body.tex	/^\\paragraph{Пункт \\code{а}}$/;"	P
+code	LaTeX/subjects/amp/mod/body.tex	/^\\paragraph{Пункт \\code{а}}$/;"	P
+code	LaTeX/subjects/objecto/mod/body.tex	/^\\paragraph{Пункт \\code{а}}$/;"	P
+code Qt	LaTeX/subjects/ads/lab/body.tex	/^\\subsection{Про \\code{Qt}}$/;"	b
+code bintree h	LaTeX/subjects/ads/lab/body.tex	/^\\subsection{Методи \\code{bintree.h}}$/;"	b
+code for	LaTeX/subjects/amp/include/labtheory.tex	/^\\subsection[Цикл \\code{for}]{Оператор циклу \\mintinline{c}|for|}$/;"	b
+code for	LaTeX/subjects/objecto/include/labtheory.tex	/^\\subsection[Цикл \\code{for}]{Оператор циклу \\mintinline{c}|for|}$/;"	b
+code if else	LaTeX/subjects/amp/include/labtheory.tex	/^\\subsection[Умовний оператор \\code{if else}]{Умовне розгалуження \\mintinline{c}|if else|}$/;"	b
+code if else	LaTeX/subjects/objecto/include/labtheory.tex	/^\\subsection[Умовний оператор \\code{if else}]{Умовне розгалуження \\mintinline{c}|if else|}$/;"	b
+code malloc	LaTeX/subjects/amp/include/labtheory.tex	/^\\subsection[Функція \\code{malloc()}]{Фунція \\mintinline{c}|malloc()|}$/;"	b
+code malloc	LaTeX/subjects/objecto/include/labtheory.tex	/^\\subsection[Функція \\code{malloc()}]{Фунція \\mintinline{c}|malloc()|}$/;"	b
+code memcpy	LaTeX/subjects/amp/include/labtheory.tex	/^\\subsection[Функція \\code{memcpy()}]{Функція \\mintinline{c}|memcpy()|}$/;"	b
+code memcpy	LaTeX/subjects/objecto/include/labtheory.tex	/^\\subsection[Функція \\code{memcpy()}]{Функція \\mintinline{c}|memcpy()|}$/;"	b
+code memset	LaTeX/subjects/amp/include/labtheory.tex	/^\\subsection[Функція \\code{memset()}]{Функція \\mintinline{c}|memset()|}$/;"	b
+code memset	LaTeX/subjects/objecto/include/labtheory.tex	/^\\subsection[Функція \\code{memset()}]{Функція \\mintinline{c}|memset()|}$/;"	b
+code printf	LaTeX/subjects/amp/include/labtheory.tex	/^\\subsection[Функція \\code{printf()}]{Функція \\mintinline{c}|printf()|}$/;"	b
+code printf	LaTeX/subjects/objecto/include/labtheory.tex	/^\\subsection[Функція \\code{printf()}]{Функція \\mintinline{c}|printf()|}$/;"	b
+code strcat	LaTeX/subjects/amp/include/labtheory.tex	/^\\subsection[Фкнція \\code{strcat()}]{Функція \\mintinline{c}|strcat()|}$/;"	b
+code strcat	LaTeX/subjects/objecto/include/labtheory.tex	/^\\subsection[Фкнція \\code{strcat()}]{Функція \\mintinline{c}|strcat()|}$/;"	b
+code strcmp	LaTeX/subjects/amp/include/labtheory.tex	/^\\subsection[Функція \\code{strcmp()}]{Функція \\mintinline{c}|strcmp()|}$/;"	b
+code strcmp	LaTeX/subjects/objecto/include/labtheory.tex	/^\\subsection[Функція \\code{strcmp()}]{Функція \\mintinline{c}|strcmp()|}$/;"	b
+code strlen	LaTeX/subjects/amp/include/labtheory.tex	/^\\subsection[Функція \\code{strlen()}]{Функція \\mintinline{c}|strlen()|}$/;"	b
+code strlen	LaTeX/subjects/objecto/include/labtheory.tex	/^\\subsection[Функція \\code{strlen()}]{Функція \\mintinline{c}|strlen()|}$/;"	b
+code while	LaTeX/subjects/amp/include/labtheory.tex	/^\\subsection[Цикл \\code{while}]{Оператор циклy \\mintinline{c}|while|}$/;"	b
+code while	LaTeX/subjects/objecto/include/labtheory.tex	/^\\subsection[Цикл \\code{while}]{Оператор циклy \\mintinline{c}|while|}$/;"	b
+cumulativeLeftSpacing	mainwindow.h	/^    int cumulativeLeftSpacing = 0;$/;"	m	struct:nodeData
+cumulativeRightSpacing	mainwindow.h	/^    int cumulativeRightSpacing = 0;$/;"	m	struct:nodeData
+dX	mainwindow.cpp	/^#define dX /;"	d	file:
+dY	mainwindow.cpp	/^#define dY /;"	d	file:
+data	bintree.h	/^    T* data;$/;"	m	struct:node
+depth	bintree.h	/^static int bintree<T>::depth(node<T>* leaf) {$/;"	f	class:bintree
+destroy	bintree.h	/^node<T>* bintree<T>::destroy(int* key, node<T>* leaf) {$/;"	f	class:bintree
+destroy	bintree.h	/^void bintree<T>::destroy(int key) {$/;"	f	class:bintree
+destroyTree	bintree.h	/^void bintree<T>::destroyTree() {$/;"	f	class:bintree
+destroyTree	bintree.h	/^void bintree<T>::destroyTree(node<T> *leaf) {$/;"	f	class:bintree
+dots	LaTeX/subjects/algeoma/gdw/body.tex	/^\\section{Дано координати точок. Знайти\\dots}$/;"	s
+drawTree	mainwindow.cpp	/^void MainWindow::drawTree(bintree<nodeData>* tree) {$/;"	f	class:MainWindow
+eqref eq q 1 1	LaTeX/subjects/algeoma/homework/body.tex	/^\\subsection{НСД \\eqref{eq:q:1:1}}$/;"	b
+eqref eq q 1 2	LaTeX/subjects/algeoma/homework/body.tex	/^\\subsection{НСД \\eqref{eq:q:1:2}}$/;"	b
+findMaxNode	mainwindow.cpp	/^void MainWindow::findMaxNode(bool update) {$/;"	f	class:MainWindow
+findMinNode	mainwindow.cpp	/^void MainWindow::findMinNode(bool update) {$/;"	f	class:MainWindow
+food	food.h	/^QString food[FOOD_SIZE] = {$/;"	v
+g:this_obsession	Session.vim	/^let g:this_obsession = v:this_session$/;"	v
+g:this_session	Session.vim	/^let g:this_session = v:this_session$/;"	v
+getMaxWidth	bintree.h	/^static int bintree<T>::getMaxWidth(node<T>* leaf) {$/;"	f	class:bintree
+getWidth	bintree.h	/^static int bintree<T>::getWidth(node<T>* leaf, int level) {$/;"	f	class:bintree
+inorderPrint	bintree.h	/^void bintree<T>::inorderPrint() {$/;"	f	class:bintree
+inorderPrint	bintree.h	/^void bintree<T>::inorderPrint(node<T>* leaf) {$/;"	f	class:bintree
+insert	bintree.h	/^node<T>* bintree<T>::insert(int key) {$/;"	f	class:bintree
+insert	bintree.h	/^node<T>* bintree<T>::insert(int key, node<T> *leaf) {$/;"	f	class:bintree
+key	bintree.h	/^    int key;$/;"	m	struct:node
+lastFound	mainwindow.h	/^    node<nodeData>* lastFound = nullptr;$/;"	m	class:MainWindow
+lastFoundMax	mainwindow.h	/^    node<nodeData>* lastFoundMax = nullptr;$/;"	m	class:MainWindow
+lastFoundMin	mainwindow.h	/^    node<nodeData>* lastFoundMin = nullptr;$/;"	m	class:MainWindow
+left	bintree.h	/^    node<T>* left;$/;"	m	struct:node
+leftDepth	bintree.h	/^int bintree<T>::leftDepth() {$/;"	f	class:bintree
+leftDepth	bintree.h	/^static int bintree<T>::leftDepth(node<T>* leaf) {$/;"	f	class:bintree
+leftSpacing	mainwindow.h	/^    int leftSpacing = 0;$/;"	m	struct:nodeData
+main	main.cpp	/^int main(int argc, char *argv[])$/;"	f
+makeTree	mainwindow.cpp	/^bintree<nodeData>* MainWindow::makeTree(void) {$/;"	f	class:MainWindow
+node	bintree.h	/^struct node {$/;"	s
+nodeData	mainwindow.h	/^struct nodeData {$/;"	s
+onTreeOperation	mainwindow.cpp	/^void MainWindow::onTreeOperation(bool changing) {$/;"	f	class:MainWindow
+on_collapseAllPushButton_clicked	mainwindow.cpp	/^void MainWindow::on_collapseAllPushButton_clicked()$/;"	f	class:MainWindow
+on_createButton_clicked	mainwindow.cpp	/^void MainWindow::on_createButton_clicked()$/;"	f	class:MainWindow
+on_deleteButton_clicked	mainwindow.cpp	/^void MainWindow::on_deleteButton_clicked()$/;"	f	class:MainWindow
+on_expandAllPushButton_clicked	mainwindow.cpp	/^void MainWindow::on_expandAllPushButton_clicked()$/;"	f	class:MainWindow
+on_expandToLevelPushButton_clicked	mainwindow.cpp	/^void MainWindow::on_expandToLevelPushButton_clicked()$/;"	f	class:MainWindow
+on_findAutomaticallyCheckBox_stateChanged	mainwindow.cpp	/^void MainWindow::on_findAutomaticallyCheckBox_stateChanged(int state)$/;"	f	class:MainWindow
+on_findKeySpinBox_valueChanged	mainwindow.cpp	/^void MainWindow::on_findKeySpinBox_valueChanged(int arg1)$/;"	f	class:MainWindow
+on_findMaxKeypushButton_clicked	mainwindow.cpp	/^void MainWindow::on_findMaxKeypushButton_clicked()$/;"	f	class:MainWindow
+on_findMinKeypushButton_clicked	mainwindow.cpp	/^void MainWindow::on_findMinKeypushButton_clicked()$/;"	f	class:MainWindow
+on_findNodePushButton_clicked	mainwindow.cpp	/^void MainWindow::on_findNodePushButton_clicked()$/;"	f	class:MainWindow
+on_insertButton_clicked	mainwindow.cpp	/^void MainWindow::on_insertButton_clicked()$/;"	f	class:MainWindow
+on_insertKeySpinBox_valueChanged	mainwindow.cpp	/^void MainWindow::on_insertKeySpinBox_valueChanged(int arg1)$/;"	f	class:MainWindow
+on_refreshAutomaticallyCheckBox_stateChanged	mainwindow.cpp	/^void MainWindow::on_refreshAutomaticallyCheckBox_stateChanged(int state)$/;"	f	class:MainWindow
+on_refreshButton_clicked	mainwindow.cpp	/^void MainWindow::on_refreshButton_clicked()$/;"	f	class:MainWindow
+on_zoomHorizontalSlider_valueChanged	mainwindow.cpp	/^void MainWindow::on_zoomHorizontalSlider_valueChanged(int value)$/;"	f	class:MainWindow
+parent	mainwindow.h	/^    node<nodeData>* parent = nullptr;$/;"	m	struct:nodeData
+postorderPrint	bintree.h	/^void bintree<T>::postorderPrint() {$/;"	f	class:bintree
+postorderPrint	bintree.h	/^void bintree<T>::postorderPrint(node<T>* leaf) {$/;"	f	class:bintree
+preorderPrint	bintree.h	/^void bintree<T>::preorderPrint() {$/;"	f	class:bintree
+preorderPrint	bintree.h	/^void bintree<T>::preorderPrint(node<T>* leaf) {$/;"	f	class:bintree
+printTree	mainwindow.cpp	/^void MainWindow::printTree(bintree<nodeData>* tree) {$/;"	f	class:MainWindow
+right	bintree.h	/^    node<T>* right;$/;"	m	struct:node
+rightDepth	bintree.h	/^int bintree<T>::rightDepth() {$/;"	f	class:bintree
+rightDepth	bintree.h	/^static int bintree<T>::rightDepth(node<T>* leaf) {$/;"	f	class:bintree
+rightSpacing	mainwindow.h	/^    int rightSpacing = 0;$/;"	m	struct:nodeData
+root	bintree.h	/^    node<T>* root;$/;"	m	class:bintree
+s:l	Session.vim	/^let s:l = 1115 - ((61 * winheight(0) + 31) \/ 62)$/;"	v
+s:l	Session.vim	/^let s:l = 245 - ((61 * winheight(0) + 31) \/ 62)$/;"	v
+s:l	Session.vim	/^let s:l = 9 - ((8 * winheight(0) + 31) \/ 62)$/;"	v
+s:shortmess_save	Session.vim	/^let s:shortmess_save = &shortmess$/;"	v
+s:so_save	Session.vim	/^let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1$/;"	v
+s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+sX	mainwindow.cpp	/^#define sX /;"	d	file:
+sY	mainwindow.cpp	/^#define sY /;"	d	file:
+scene	mainwindow.h	/^    QGraphicsScene* scene;$/;"	m	class:MainWindow
+search	bintree.h	/^node<T>* bintree<T>::search(int key) {$/;"	f	class:bintree
+search	bintree.h	/^node<T>* bintree<T>::search(int key, node<T> *leaf) {$/;"	f	class:bintree
+searchMax	bintree.h	/^node<T>* bintree<T>::searchMax() {$/;"	f	class:bintree
+searchMax	bintree.h	/^node<T>* bintree<T>::searchMax(node<T>* leaf) {$/;"	f	class:bintree
+searchMin	bintree.h	/^node<T>* bintree<T>::searchMin() {$/;"	f	class:bintree
+searchMin	bintree.h	/^node<T>* bintree<T>::searchMin(node<T>* leaf) {$/;"	f	class:bintree
+str	mainwindow.h	/^    QString str = nullptr;$/;"	m	struct:nodeData
+tree	mainwindow.h	/^    bintree<nodeData>* tree;$/;"	m	class:MainWindow
+ui	mainwindow.h	/^    Ui::MainWindow *ui;$/;"	m	class:MainWindow
+updateTree	mainwindow.cpp	/^void MainWindow::updateTree() {$/;"	f	class:MainWindow
+zt	Session.vim	/^normal! zt$/;"	m
+~MainWindow	mainwindow.cpp	/^MainWindow::~MainWindow()$/;"	f	class:MainWindow
+~bintree	bintree.h	/^bintree<T>::~bintree() {$/;"	f	class:bintree
