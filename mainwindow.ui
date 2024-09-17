@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1038</width>
-    <height>606</height>
+    <width>1028</width>
+    <height>562</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -28,280 +28,107 @@
      <pointsize>9</pointsize>
     </font>
    </property>
-   <layout class="QGridLayout" name="gridLayout_4">
-    <property name="leftMargin">
-     <number>0</number>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>-10</y>
+      <width>551</width>
+      <height>261</height>
+     </rect>
     </property>
-    <property name="topMargin">
-     <number>0</number>
+    <layout class="QGridLayout" name="gridLayout"/>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>120</y>
+      <width>421</width>
+      <height>311</height>
+     </rect>
     </property>
-    <property name="rightMargin">
-     <number>0</number>
+    <widget class="QWidget" name="page"/>
+    <widget class="QWidget" name="page_2"/>
+   </widget>
+   <widget class="QPushButton" name="startLevel3Button">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>340</y>
+      <width>128</width>
+      <height>22</height>
+     </rect>
     </property>
-    <property name="bottomMargin">
-     <number>0</number>
+    <property name="text">
+     <string>Уровень 3</string>
     </property>
-    <item row="0" column="0">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="mouseTracking">
-       <bool>false</bool>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::FocusPolicy::StrongFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="tabPosition">
-       <enum>QTabWidget::TabPosition::North</enum>
-      </property>
-      <property name="tabShape">
-       <enum>QTabWidget::TabShape::Rounded</enum>
-      </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>17</width>
-        <height>17</height>
-       </size>
-      </property>
-      <property name="elideMode">
-       <enum>Qt::TextElideMode::ElideRight</enum>
-      </property>
-      <property name="usesScrollButtons">
-       <bool>false</bool>
-      </property>
-      <property name="documentMode">
-       <bool>true</bool>
-      </property>
-      <property name="tabsClosable">
-       <bool>false</bool>
-      </property>
-      <property name="movable">
-       <bool>false</bool>
-      </property>
-      <property name="tabBarAutoHide">
-       <bool>false</bool>
-      </property>
-      <widget class="QWidget" name="graphicsTab">
-       <attribute name="title">
-        <string>Блок схема</string>
-       </attribute>
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>20</y>
-          <width>611</width>
-          <height>291</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Виртуальный квест по Основам языка С#&lt;/p&gt;&lt;p&gt;Чтобы начать нажмите кнопку Start&lt;/p&gt;&lt;p&gt;Чтобы выйти Quit&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>310</y>
-          <width>161</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Start</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="geometry">
-         <rect>
-          <x>610</x>
-          <y>310</y>
-          <width>161</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Quit</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="tab">
-       <attribute name="icon">
-        <iconset>
-         <normaloff>../../Downloads/icons/Hopstarter-Sleek-Xp-Basic-Help.ico</normaloff>../../Downloads/icons/Hopstarter-Sleek-Xp-Basic-Help.ico</iconset>
-       </attribute>
-       <attribute name="title">
-        <string>Справка программы</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_5">
-        <item row="0" column="0">
-         <widget class="QTreeWidget" name="treeWidget_3">
-          <property name="font">
-           <font>
-            <pointsize>10</pointsize>
-           </font>
-          </property>
-          <property name="focusPolicy">
-           <enum>Qt::FocusPolicy::StrongFocus</enum>
-          </property>
-          <column>
-           <property name="text">
-            <string>Справка</string>
-           </property>
-          </column>
-          <item>
-           <property name="text">
-            <string>Краткая информация о бинарном дереве</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Двои́чное де́рево (Бинарное дерево) — иерархическая структура данных, в которой каждый узел имеет не более двух потомков (детей). 
-Как правило, первый называется родительским узлом, а дети называются левым и правым наследниками. 
-Двоичное дерево является упорядоченным ориентированным деревом.
-</string>
-            </property>
-            <property name="flags">
-             <set>ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
-            </property>
-           </item>
-          </item>
-          <item>
-           <property name="text">
-            <string>Для кого предназначена эта программа</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Программа &quot;Визуализатор работы бинарного дерева&quot; предназначена для студентов, преподавателей, разработчиков и всех, 
-кто интересуется структурами данных и алгоритмами. Она может быть полезна для изучения работы бинарных деревьев, 
-визуализации операций добавления, удаления, поиска узлов, а также для отладки и тестирования алгоритмов на бинарных деревьях. 
-Программа поможет пользователям лучше понять принципы работы бинарных деревьев и улучшить навыки программирования.
-</string>
-            </property>
-           </item>
-          </item>
-          <item>
-           <property name="text">
-            <string>Использование программы</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>1) Добавление элементов: Чтобы добавить новый узел, пользователь должен указать значение (левый или правый потомок) для добавления.
-
-2) Удаление элементов: Для удаления узла из бинарного дерева пользователь должен выбрать узел, который необходимо удалить.
-
-3) Поиск элементов: Для поиска определенного значения в бинарном дереве пользователь должен ввести искомое значение, и программа отобразит путь до найденного узла.</string>
-            </property>
-           </item>
-          </item>
-          <item>
-           <property name="text">
-            <string>Основные функции программы</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>    1) Визуализация бинарного дерева: Программа отображает структуру бинарного дерева графически, 
-что помогает пользователям лучше понять его устройство.
-
-    2) Добавление элементов: Пользователь может добавлять новые узлы в бинарное дерево, 
-указывая значение каждого узла.
-
-    3) Удаление элементов: Программа позволяет удалять узлы из бинарного дерева.
-
-    4) Поиск элементов: Пользователь может выполнять поиск определенного значения в бинарном дереве.
-
-    5) Обходы бинарного дерева: Программа предоставляет возможность выполнять различные обходы бинарного дерева, 
-такие как префиксный, инфиксный и постфиксный обходы.
-
-    6) Визуализация операций: В процессе выполнения операций добавления, удаления и поиска узлов, 
-программа динамически обновляет визуализацию бинарного дерева, чтобы отразить изменения.
-
-    7) Экспорт и импорт данных: Пользователь может сохранять состояние бинарного дерева и загружать его из файла для последующего использования.
-
-    8) Интерактивный интерфейс: Программа предоставляет удобный и интуитивно понятный интерфейс для взаимодействия с бинарным деревом.</string>
-            </property>
-           </item>
-          </item>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="icon">
-        <iconset>
-         <normaloff>../../Downloads/icons/Oxygen-Icons.org-Oxygen-Actions-help-about.ico</normaloff>../../Downloads/icons/Oxygen-Icons.org-Oxygen-Actions-help-about.ico</iconset>
-       </attribute>
-       <attribute name="title">
-        <string>О программе</string>
-       </attribute>
-       <widget class="QFrame" name="frame">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>110</y>
-          <width>581</width>
-          <height>311</height>
-         </rect>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Raised</enum>
-        </property>
-        <widget class="QLabel" name="label_5">
-         <property name="geometry">
-          <rect>
-           <x>100</x>
-           <y>10</y>
-           <width>391</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Виртуальный квест «По основам языка С#».</string>
-         </property>
-        </widget>
-       </widget>
-      </widget>
-     </widget>
-    </item>
-   </layout>
+   </widget>
+   <widget class="QPushButton" name="startLevel2Button">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>340</y>
+      <width>129</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Уровень 2</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startLevel1Button">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>340</y>
+      <width>129</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Уровень 1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="submitLevel1Button">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>300</y>
+      <width>261</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Уровень 1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="submitLevel2Button">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>260</y>
+      <width>264</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Уровень 1</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="submitLevel3Button">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>260</y>
+      <width>251</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Уровень 1</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
