@@ -14,10 +14,10 @@ ICON = app.ico
 
 SOURCES += \
     main.cpp \
-    menu.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    menu.h
+    mainwindow.h
 
 FORMS +=
 

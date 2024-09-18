@@ -1,9 +1,10 @@
-#include "menu.h"
+#include "mainwindow.h"
 #include <QMenuBar>
 #include <QMenu>
 #include <QAction>
 #include <QMessageBox>
 
+// Менюшка
 MainWindow::MainWindow() {
     // Создаем строку меню
     QMenuBar *menuBar = new QMenuBar(this);
@@ -53,5 +54,5 @@ void MainWindow::showAboutDialog() {
 }
 
 void MainWindow::showAboutProgramm() {
-    QMessageBox::about(this, "Использование", "Программа VirtualQuizCsharp\nVersion 1.0\nAutor: Dubnovitskiy Dmitry\nGithub: dmitryreaper");
+    QMessageBox::about(this, "Использование", "<center>Справка по использованию программы</center>");
 }

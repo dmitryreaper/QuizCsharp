@@ -4,7 +4,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QMainWindow>
-#include <menu.h>
+#include <mainwindow.h>
 
 
 int main(int argc, char *argv[]) {
@@ -14,6 +14,15 @@ int main(int argc, char *argv[]) {
     MainWindow mainWindow;
     mainWindow.setWindowTitle("VirtualQuizCsharp");
     mainWindow.resize(800, 460);
+
+    //Кнопочки
+    QPushButton *startgame = new QPushButton("Start Game", &mainWindow);
+    startgame->move(300,400);
+    QPushButton *quitgame = new QPushButton("Quit", &mainWindow);
+    quitgame->move(420, 400);
+
+    //connect Button
+
     mainWindow.show();
 
     return app.exec();
