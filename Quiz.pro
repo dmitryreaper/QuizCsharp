@@ -6,7 +6,7 @@ CONFIG += c++17
 
 QMAKE_CXXFLAGS += -fpermissive
 
-ICON = app.ico
+ICON = img/app.ico
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -26,7 +26,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES +=
+RESOURCES += resource.qrc
 
 DISTFILES += \
     img/tutor.png
+    img/app.ico

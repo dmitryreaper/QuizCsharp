@@ -1,11 +1,14 @@
 #include "mainwindow.h"
 #include <QMenuBar>
+#include <QMainWindow>
 #include <QMenu>
+#include <QPushButton>
 #include <QAction>
 #include <QMessageBox>
 
 // Менюшка
 MainWindow::MainWindow() {
+
     // Создаем строку меню
     QMenuBar *menuBar = new QMenuBar(this);
 
@@ -13,7 +16,7 @@ MainWindow::MainWindow() {
     QMenu *fileMenu = new QMenu("Файл", this);
 
     // Создаем действия для меню "Файл"
-    QAction *newAction = new QAction("Новый", this);
+    QAction *newAction = new QAction("Новая игра", this);
     QAction *openAction = new QAction("Открыть", this);
     QAction *exitAction = new QAction("Выход", this);
 
@@ -46,11 +49,23 @@ MainWindow::MainWindow() {
 
     // Устанавливаем меню на главное окно
     setMenuBar(menuBar);
+
 }
 
+// Start programms
 /////////////////////////////////Справка
+QString imagePath = ":/img/app.ico";  // Используем ресурсный файл или относительный путь
+
+QString text = QString(
+                   "<h3>Программа VirtualQuizCsharp</h3>"
+                   "<center><p><img src='%1' width='64' height='64'></p></center>"
+                   "<p>Version 1.0</p>"
+                   "<p>Autor: Dubnovitskiy Dmitry</p>"
+                   "<p>Github: <a href='https://github.com/dmitryreaper'>dmitryreaper</a></p>"
+                   ).arg(imagePath);
+
 void MainWindow::showAboutDialog() {
-    QMessageBox::about(this, "О программе", "Программа VirtualQuizCsharp\nVersion 1.0\nAutor: Dubnovitskiy Dmitry\nGithub: dmitryreaper");
+    QMessageBox::about(this, "О программе", text);
 }
 
 void MainWindow::showAboutProgramm() {

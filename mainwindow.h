@@ -10,8 +10,10 @@ public:
     MainWindow();  // Конструктор
 
 private slots:
-    void showAboutDialog();  // Слот для отображения окна "О программе"
     void showAboutProgramm();
+    void showAboutDialog();
+    void createButtons();
 };
 
+//button
 #endif // MAINWINDOW_H
