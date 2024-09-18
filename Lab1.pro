@@ -6,7 +6,7 @@ CONFIG += c++17
 
 QMAKE_CXXFLAGS += -fpermissive
 
-ICON = icon.icns
+ICON = app.ico
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -14,35 +14,19 @@ ICON = icon.icns
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    menu.cpp
 
 HEADERS += \
-    mainwindow.h
+    menu.h
 
-FORMS += \
-    mainwindow.ui
+FORMS +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
-    resources.qrc \
-    resources.qrc
+RESOURCES +=
 
 DISTFILES += \
-    binary visualizer icons/Binary-tree_25386.png \
-    binary visualizer icons/Binary-tree_25386.png \
-    binary visualizer icons/Settings_30027.png \
-    binary visualizer icons/Settings_30027.png \
-    binary visualizer icons/free-icon-question-mark-5727965.png \
-    binary visualizer icons/free-icon-question-mark-5727965.png \
-    binary visualizer icons/free-icon-tree-structure-5361881.png \
-    binary visualizer icons/free-icon-tree-structure-5361881.png \
-    binary visualizer icons/icons8-помощь-48.png \
-    binary visualizer icons/icons8-помощь-48.png \
-    binary visualizer icons/info.png \
-    binary visualizer icons/info.png \
-    recources/refresh.png \
-    tags
+    img/tutor.png
