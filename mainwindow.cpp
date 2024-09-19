@@ -12,9 +12,7 @@
 MainWindow::MainWindow() {
 
     // Создаем строку меню
-    QMenuBar *menuBar = new QMenuBar(this);
-
-    // Создаем меню "Файл"
+    QMenuBar *menuBar = new QMenuBar(this);  // Создаем меню "Файл"
     QMenu *fileMenu = new QMenu("Файл", this);
 
     // Создаем действия для меню "Файл"
@@ -30,7 +28,6 @@ MainWindow::MainWindow() {
 
     // Подключаем действие выхода к слоту закрытия окна
     connect(exitAction, &QAction::triggered, this, &QMainWindow::close);
-
 
     // Добавляем меню "Файл" на строку меню
     menuBar->addMenu(fileMenu);
@@ -53,11 +50,15 @@ MainWindow::MainWindow() {
     // Устанавливаем меню на главное окно
     setMenuBar(menuBar);
 
-    //Привязка регистрации registration.cpp к sign
+    //Регистрация пользователя
     QPushButton *sign = new QPushButton("Регистрация", this);
     sign->move(420,250);
     registrationWindow = new RegistrationWindow();
     connect(sign, &QPushButton::clicked, this, &MainWindow::showRegistrationWindow);
+
+    //Вход пользователя
+    QPushButton *sin = new QPushButton("Войти", this);
+    sin->move(250, 250);
 
 ////////////////////////////////////////////////Кнопочки
 ///
@@ -74,6 +75,7 @@ MainWindow::MainWindow() {
 /////////////////////////////////Справка
 QString imagePath = ":/img/tutor.png";  // Используем ресурсный файл или относительный путь
 
+//////////////////////////////////aboutPogram
 QString text = QString(
                    "<h3>Программа VirtualQuizCsharp</h3>"
                    "<center><p><img src='%1' width='64' height='64'></p></center>"
@@ -82,6 +84,7 @@ QString text = QString(
                    "<p>Github: <a href='https://github.com/dmitryreaper'>dmitryreaper</a></p>"
                    ).arg(imagePath);
 
+//function
 void MainWindow::showAboutDialog() {
     QMessageBox::about(this, "О программе", text);
 }
