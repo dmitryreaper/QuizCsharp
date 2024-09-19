@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "registration.h"
 #include <QMainWindow>
 
 class MainWindow : public QMainWindow {
@@ -10,9 +10,14 @@ public:
     MainWindow();  // Конструктор
 
 private slots:
+
+private:
+    RegistrationWindow *registrationWindow;
+
+private slots:
     void showAboutProgramm();
     void showAboutDialog();
-    void createButtons();
+    void showRegistrationWindow();  // Слот для показа окна регистрации
 };
 
 //button

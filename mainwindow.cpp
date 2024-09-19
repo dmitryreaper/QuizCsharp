@@ -1,13 +1,16 @@
 #include "mainwindow.h"
+#include "registration.h"
 #include <QMenuBar>
 #include <QMainWindow>
 #include <QMenu>
+#include <QApplication>
 #include <QPushButton>
 #include <QAction>
 #include <QMessageBox>
 
 // Менюшка
 MainWindow::MainWindow() {
+
 
     // Создаем строку меню
     QMenuBar *menuBar = new QMenuBar(this);
@@ -29,10 +32,11 @@ MainWindow::MainWindow() {
     // Подключаем действие выхода к слоту закрытия окна
     connect(exitAction, &QAction::triggered, this, &QMainWindow::close);
 
+
     // Добавляем меню "Файл" на строку меню
     menuBar->addMenu(fileMenu);
 
-    // Создаем меню "Справка"
+    // создаем меню "справка"
     QMenu *helpMenu = new QMenu("Справка", this);
     QAction *aboutAction = new QAction("О программе", this);
     QAction *aboutProgramm = new QAction("Справка программы", this);
@@ -50,11 +54,26 @@ MainWindow::MainWindow() {
     // Устанавливаем меню на главное окно
     setMenuBar(menuBar);
 
+    //Привязка регистрации registration.cpp к sign
+    QPushButton *sign = new QPushButton("Регистрация", this);
+    sign->move(420,250);
+    registrationWindow = new RegistrationWindow(this);
+    connect(sign, &QPushButton::clicked, this, &MainWindow::showRegistrationWindow);
+
+////////////////////////////////////////////////Кнопочки
+///
+    QPushButton *startgame = new QPushButton("Start Game",this);
+    startgame->move(300,400);
+    QPushButton *quitgame = new QPushButton("Quit", this);
+    QObject::connect(quitgame, &QPushButton::clicked, &QApplication::quit);
+    quitgame->move(420, 400);
+
+
 }
 
 // Start programms
 /////////////////////////////////Справка
-QString imagePath = ":/img/app.ico";  // Используем ресурсный файл или относительный путь
+QString imagePath = ":/img/tutor.png";  // Используем ресурсный файл или относительный путь
 
 QString text = QString(
                    "<h3>Программа VirtualQuizCsharp</h3>"
@@ -70,4 +89,9 @@ void MainWindow::showAboutDialog() {
 
 void MainWindow::showAboutProgramm() {
     QMessageBox::about(this, "Использование", "<center>Справка по использованию программы</center>");
+}
+
+void MainWindow::showRegistrationWindow()
+{
+    registrationWindow->show();  // Показываем окно регистрации
 }

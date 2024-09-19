@@ -14,10 +14,12 @@ ICON = img/app.ico
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    registration.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    registration.h
 
 FORMS +=
 
@@ -25,8 +27,6 @@ FORMS +=
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += resource.qrc
 
 DISTFILES += \
     img/tutor.png
