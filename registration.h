@@ -5,13 +5,14 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include <QMessageBox>
+#include <QMainWindow>
 
-class RegistrationWindow : public QWidget
+class RegistrationWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    RegistrationWindow(QWidget *parent = nullptr);
+    RegistrationWindow();
 
 private slots:
     void onRegisterClicked();  // Обработчик регистрации

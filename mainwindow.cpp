@@ -8,9 +8,8 @@
 #include <QAction>
 #include <QMessageBox>
 
-// Менюшка
+// General Window
 MainWindow::MainWindow() {
-
 
     // Создаем строку меню
     QMenuBar *menuBar = new QMenuBar(this);
@@ -57,7 +56,7 @@ MainWindow::MainWindow() {
     //Привязка регистрации registration.cpp к sign
     QPushButton *sign = new QPushButton("Регистрация", this);
     sign->move(420,250);
-    registrationWindow = new RegistrationWindow(this);
+    registrationWindow = new RegistrationWindow();
     connect(sign, &QPushButton::clicked, this, &MainWindow::showRegistrationWindow);
 
 ////////////////////////////////////////////////Кнопочки

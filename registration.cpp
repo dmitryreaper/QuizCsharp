@@ -1,8 +1,7 @@
 #include "registration.h"
 #include <QWindow>
 
-RegistrationWindow::RegistrationWindow(QWidget *parent)
-    : QWidget(parent)
+RegistrationWindow::RegistrationWindow()
 {
     setWindowTitle("Окно регистрации");
 
