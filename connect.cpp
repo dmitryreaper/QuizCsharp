@@ -1,4 +1,4 @@
-#include "startprogram.h"
+#include "connect.h"
 #include <QApplication>
 #include <QWindow>
 
@@ -18,7 +18,7 @@ StartWindow::StartWindow()
     QLineEdit *email = new QLineEdit(this);
     email->setPlaceholderText("Введите email");
     email->resize(170,30);
-    QPushButton *registerButton = new QPushButton("Регистрация", this);
+    QPushButton *registerButton = new QPushButton("Войти", this);
 
     QLineEdit *passwordEdit = new QLineEdit(this);
     passwordEdit->setPlaceholderText("Введите пароль");

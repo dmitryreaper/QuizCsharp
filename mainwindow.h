@@ -1,11 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include "registration.h"
-#include "startprogram.h"
+#include "connect.h"
 #include <QMainWindow>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QDebug>
 
 class MainWindow : public QMainWindow {
     Q_OBJECT

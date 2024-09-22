@@ -4,10 +4,6 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QMainWindow>
-#include <QSqlDatabase>
-#include <QSqlError>
-#include <QDebug>
-#include <QSqlQuery>
 #include <mainwindow.h>
 
 int main(int argc, char *argv[]) {

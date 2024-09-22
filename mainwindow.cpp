@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "registration.h"
-#include "startprogram.h"
+#include "connect.h"
 #include <QMenuBar>
 #include <QMainWindow>
 #include <QMenu>
@@ -15,20 +15,16 @@
 MainWindow::MainWindow() {
 
     // Установка соединения с PostgreSQL
-    QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");  // Используем драйвер PostgreSQL
-    db.setHostName("localhost");         // Адрес сервера
-    db.setPort(5432);                    // Порт PostgreSQL
-    db.setDatabaseName("main");    // Имя базы данных
-    db.setUserName("postgres");          // Имя пользователя
-    db.setPassword("zxc011");          // Пароль
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");  // Используем драйвер PostgreSQL
+    db.setDatabaseName("db/users.db");
 
     // Открытие соединения
-    if (!db.open()) {
-        qDebug() << "Error: Unable to connect to database!";
+    if (db.open()) {
+        qDebug() << "Connect to database! %s", db.databaseName();
+    }
+    else {
         qDebug() << db.lastError().text();
     }
-
-    qDebug() << "Connected to PostgreSQL database!";
 
     // Создаем строку меню
     QMenuBar *menuBar = new QMenuBar(this);  // Создаем меню "Файл"
@@ -90,6 +86,8 @@ MainWindow::MainWindow() {
     //Вход пользователя
     QPushButton *sin = new QPushButton("Войти", this);
     sin->move(250, 250);
+    startwindow = new StartWindow();
+    connect(sin, &QPushButton::clicked, this, &MainWindow::showStartWindow);
 
 
 ////////////////////////////////////////////////Кнопочки

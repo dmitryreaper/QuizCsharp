@@ -13,15 +13,15 @@ ICON = img/app.ico
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    connect.cpp \
     main.cpp \
     mainwindow.cpp \
-    registration.cpp \
-    startprogram.cpp
+    registration.cpp
 
 HEADERS += \
+    connect.h \
     mainwindow.h \
-    registration.h \
-    startprogram.h
+    registration.h
 
 FORMS +=
 
