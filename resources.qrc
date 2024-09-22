@@ -1,8 +1,1 @@
-<RCC>
-    <qresource prefix="/">
-	<file>img/tutor.png</file>
-	<file>img/tut.jpg</file>
-	<file>img/app.ico</file>
-    </qresource>
-</RCC>
-
+<RCC/>

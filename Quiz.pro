@@ -25,13 +25,18 @@ HEADERS += \
 
 FORMS +=
 
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    img/tut.jpg \
     img/tutor.png
     img/tut.jpg
     img/app.ico
+    db/users.db
+
+RESOURCES += \
+    resources.qrc
+

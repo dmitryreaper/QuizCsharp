@@ -16,7 +16,7 @@ MainWindow::MainWindow() {
 
     // Установка соединения с PostgreSQL
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");  // Используем драйвер PostgreSQL
-    db.setDatabaseName("db/users.db");
+    db.setDatabaseName("users.db");
 
     // Открытие соединения
     if (db.open()) {
@@ -27,7 +27,7 @@ MainWindow::MainWindow() {
     }
 
     // Создаем строку меню
-    QMenuBar *menuBar = new QMenuBar(this);  // Создаем меню "Файл"
+    QMenuBar *menuBar = new QMenuBar(this);
     QMenu *fileMenu = new QMenu("Файл", this);
 
     // Создаем действия для меню "Файл"
@@ -96,8 +96,7 @@ MainWindow::MainWindow() {
 
 // Start programms
 /////////////////////////////////Справка
-QString imagePath = ":/img/tutor.png";  // Используем ресурсный файл или относительный путь
-
+QString imagePath = ":img/tut.jpg";
 //////////////////////////////////aboutPogram
 QString text = QString(
                    "<h3>Программа VirtualQuizCsharp</h3>"

@@ -19,7 +19,6 @@ int main(int argc, char *argv[]) {
 
     //connect Button
 
-
     mainWindow.show();
     // Закрытие соединения
     return app.exec();
