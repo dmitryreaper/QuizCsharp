@@ -1,26 +1,30 @@
 #include "mainwindow.h"
-#include "registration.h"
-#include "connect.h"
-#include <QMenuBar>
-#include <QMainWindow>
-#include <QMenu>
-#include <QApplication>
-#include <QPushButton>
-#include <QPixmap>
-#include <QAction>
-#include <QMessageBox>
-#include <QLabel>
+//#include "registration.h"
+//#include "connect.h"
 
 // General Window
-MainWindow::MainWindow() {
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+{
+    QPixmap background(":/img/back.jpg");  // Укажите путь к изображению
+    QLabel *backgroundLabel = new QLabel(this);
+    backgroundLabel->setAlignment(Qt::AlignCenter);
+    backgroundLabel->setPixmap(background);
+    backgroundLabel->setScaledContents(true);  // Масштабирование изображения под размер окна
+    //backgroundLabel->resize(800,460);
+    backgroundLabel->resize(this->size());
 
-    // Установка соединения с PostgreSQL
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");  // Используем драйвер PostgreSQL
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(backgroundLabel);
+
+
+    // Установка соединения с SQLite
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("users.db");
 
     // Открытие соединения
     if (db.open()) {
-        qDebug() << "Connect to database! %s", db.databaseName();
+        qDebug() << "Connect to database!" << "\nDATABASE:" << db.databaseName();
     }
     else {
         qDebug() << db.lastError().text();
@@ -67,7 +71,6 @@ MainWindow::MainWindow() {
 
     // Background
 
-
     //title
     QFont font;
     font.setPointSize(24);
@@ -89,14 +92,27 @@ MainWindow::MainWindow() {
     startwindow = new StartWindow();
     connect(sin, &QPushButton::clicked, this, &MainWindow::showStartWindow);
 
+    //D:/Music/rise.wav
+    //Music start Registration
+    QMediaPlayer* play = new QMediaPlayer;
+    QAudioOutput* audioOutput = new QAudioOutput;
+    play->setAudioOutput(audioOutput);
+    play->setSource(QUrl("D:/Music/rise.wav"));  // Укажите полный путь к вашему аудиофайлу
+    play->play();
 
 ////////////////////////////////////////////////Кнопочки
 ///
 }
 
+//деструктор
+MainWindow::~MainWindow()
+{
+    delete parent();
+}
+
 // Start programms
 /////////////////////////////////Справка
-QString imagePath = ":img/tut.jpg";
+QString imagePath = ":/img/app.ico";
 //////////////////////////////////aboutPogram
 QString text = QString(
                    "<h3>Программа VirtualQuizCsharp</h3>"
@@ -108,11 +124,11 @@ QString text = QString(
 
 //function
 void MainWindow::showAboutDialog() {
-    QMessageBox::about(this, "О программе", text);
+    QMessageBox::about(this, "О программе", text); // О программе
 }
 
 void MainWindow::showAboutProgramm() {
-    QMessageBox::about(this, "Использование", "<center>Справка по использованию программы</center>");
+    QMessageBox::about(this, "Использование", "<center>Справка по использованию программы</center>"); // Cправка
 }
 
 void MainWindow::showRegistrationWindow()

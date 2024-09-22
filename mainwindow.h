@@ -7,14 +7,23 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
+#include <QMediaPlayer>
+#include <QAudioOutput>
+#include <QMenuBar>
+
+#include <QPixmap>
+#include <QLabel>
+#include <QPalette>
+#include <QBrush>
+#include <QResizeEvent>
+
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    MainWindow();  // Конструктор
-
-private slots:
+    MainWindow(QWidget *parent = nullptr);  // Конструктор
+    ~MainWindow();
 
 private:
     RegistrationWindow *registrationWindow;
@@ -25,7 +34,7 @@ private slots:
     void showAboutDialog();
     void showRegistrationWindow();  // Слоты для показа окна
     void showStartWindow();
+
 };
 
-//button
 #endif // MAINWINDOW_H
