@@ -4,6 +4,10 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QMainWindow>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QDebug>
+#include <QSqlQuery>
 #include <mainwindow.h>
 
 int main(int argc, char *argv[]) {
@@ -18,6 +22,9 @@ int main(int argc, char *argv[]) {
     mainWindow.resize(800, 460);
 
     //connect Button
+
+
     mainWindow.show();
+    // Закрытие соединения
     return app.exec();
 }

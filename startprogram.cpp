@@ -1,10 +1,10 @@
-#include "registration.h"
-#include <QWindow>
+#include "startprogram.h"
 #include <QApplication>
+#include <QWindow>
 
-RegistrationWindow::RegistrationWindow()
+StartWindow::StartWindow()
 {
-    setWindowTitle("Окно регистрации");
+    setWindowTitle("Окно входа");
     setFixedSize(300,200);
     QApplication::setStyle("Fusion");
 
@@ -38,11 +38,11 @@ RegistrationWindow::RegistrationWindow()
     setLayout(layout);
 
     // Обработчик нажатия кнопки регистрации (по желанию)
-    connect(registerButton, &QPushButton::clicked, this, &RegistrationWindow::onRegisterClicked);
+    connect(registerButton, &QPushButton::clicked, this, &StartWindow::onStartClicked);
 }
 
-void RegistrationWindow::onRegisterClicked()
+void StartWindow::onStartClicked()
 {
     // Логика регистрации
-    QMessageBox::information(this, "Регистрация", "Регистрация успешна!");
+    QMessageBox::information(this, "Вход", "Вход успешен!");
 }

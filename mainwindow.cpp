@@ -1,15 +1,34 @@
 #include "mainwindow.h"
 #include "registration.h"
+#include "startprogram.h"
 #include <QMenuBar>
 #include <QMainWindow>
 #include <QMenu>
 #include <QApplication>
 #include <QPushButton>
+#include <QPixmap>
 #include <QAction>
 #include <QMessageBox>
+#include <QLabel>
 
 // General Window
 MainWindow::MainWindow() {
+
+    // Установка соединения с PostgreSQL
+    QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");  // Используем драйвер PostgreSQL
+    db.setHostName("localhost");         // Адрес сервера
+    db.setPort(5432);                    // Порт PostgreSQL
+    db.setDatabaseName("main");    // Имя базы данных
+    db.setUserName("postgres");          // Имя пользователя
+    db.setPassword("zxc011");          // Пароль
+
+    // Открытие соединения
+    if (!db.open()) {
+        qDebug() << "Error: Unable to connect to database!";
+        qDebug() << db.lastError().text();
+    }
+
+    qDebug() << "Connected to PostgreSQL database!";
 
     // Создаем строку меню
     QMenuBar *menuBar = new QMenuBar(this);  // Создаем меню "Файл"
@@ -50,6 +69,18 @@ MainWindow::MainWindow() {
     // Устанавливаем меню на главное окно
     setMenuBar(menuBar);
 
+    // Background
+
+
+    //title
+    QFont font;
+    font.setPointSize(24);
+    QLabel *title = new QLabel("\t  Добро пожаловать в\nВиртуальный квест по основам языка C#",this);
+    title->setFont(font);
+    title->resize(600,90);
+    title->move(120,30);
+    title->show();
+
     //Регистрация пользователя
     QPushButton *sign = new QPushButton("Регистрация", this);
     sign->move(420,250);
@@ -60,15 +91,9 @@ MainWindow::MainWindow() {
     QPushButton *sin = new QPushButton("Войти", this);
     sin->move(250, 250);
 
+
 ////////////////////////////////////////////////Кнопочки
 ///
-    QPushButton *startgame = new QPushButton("Start Game",this);
-    startgame->move(300,400);
-    QPushButton *quitgame = new QPushButton("Quit", this);
-    QObject::connect(quitgame, &QPushButton::clicked, &QApplication::quit);
-    quitgame->move(420, 400);
-
-
 }
 
 // Start programms
@@ -96,4 +121,9 @@ void MainWindow::showAboutProgramm() {
 void MainWindow::showRegistrationWindow()
 {
     registrationWindow->show();  // Показываем окно регистрации
+}
+
+void MainWindow::showStartWindow()
+{
+    startwindow->show();  // Показываем окно регистрации
 }
