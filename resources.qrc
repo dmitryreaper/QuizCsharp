@@ -5,5 +5,6 @@
 	<file>img/back.png</file>
 	<file>img/logo.png</file>	
 	<file>img/giphy.gif</file>	
+	<file>img/chill.gif</file>	
     </qresource>
 </RCC>

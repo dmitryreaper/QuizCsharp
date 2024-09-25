@@ -1,38 +1,18 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-#include "connect.h"
-#include "registration.h"
+// generalwindow.h
+#ifndef GENERALWINDOW_H
+#define GENERALWINDOW_H
+
 #include <QMainWindow>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QDebug>
-#include <QMediaPlayer>
-#include <QAudioOutput>
-#include <QMenuBar>
-#include <QMovie>
 
-#include <QPixmap>
-#include <QLabel>
-#include <QPalette>
-#include <QBrush>
-#include <QResizeEvent>
-
-
-class GeneralWindow : public QMainWindow {
+class GeneralWindow : public QMainWindow
+{
     Q_OBJECT
 
 public:
-    GeneralWindow(QWidget *parent = nullptr);  // Конструктор
-    ~GeneralWindow();
+    explicit GeneralWindow(QWidget *parent = nullptr);
 
 private:
-    GeneralWindow *generalWindow;
-    StartWindow *startwindow;
-    RegistrationWindow *regwindow;
-
-private slots:
-    void DeleteWindow();
+         // Здесь можно добавить элементы интерфейса нового окна
 };
 
-#endif // MAINWINDOW_H
+#endif // GENERALWINDOW_H

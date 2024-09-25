@@ -1,4 +1,5 @@
 #include "connect.h"
+#include "generalwindow.h"
 #include <QApplication>
 #include <QWindow>
 
@@ -39,16 +40,17 @@ StartWindow::StartWindow()
 
     // Обработчик нажатия кнопки входа (по желанию)
     connect(registerButton, &QPushButton::clicked, this, &StartWindow::onStartClicked);
-    connect(registerButton, &QPushButton::clicked, this, &StartWindow::StartGeneralWindow);
 }
 
 void StartWindow::onStartClicked()
 {
     // Логика входа
     QMessageBox::information(this, "Вход", "Вход успешен!");
-}
 
-void StartWindow::StartGeneralWindow()
-{
+    // Открываем новое окно
+    GeneralWindow *generalWindow = new GeneralWindow();
+    generalWindow->show();
+
+    // Закрываем текущее окно
     this->close();
 }
