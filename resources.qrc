@@ -2,7 +2,7 @@
     <qresource prefix="/">
         <file>img/tutor.png</file>
 	<file>img/tut.jpg</file>
-	<file>img/back.jpg</file>
-	<file>music/rise.wav</file>	
+	<file>img/back.png</file>
+	<file>img/logo.png</file>	
     </qresource>
 </RCC>

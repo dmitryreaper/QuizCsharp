@@ -6,16 +6,9 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    QPixmap background(":/img/back.jpg");  // Укажите путь к изображению
-    QLabel *backgroundLabel = new QLabel(this);
-    backgroundLabel->setAlignment(Qt::AlignCenter);
-    backgroundLabel->setPixmap(background);
-    backgroundLabel->setScaledContents(true);  // Масштабирование изображения под размер окна
-    //backgroundLabel->resize(800,460);
-    backgroundLabel->resize(this->size());
 
-    QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(backgroundLabel);
+    this->setFixedSize(800,460);
+    this->setStyleSheet("QMainWindow { background-image: url(:/img/back.png); background-position: center; background-repeat: no-repeat; }");
 
 
     // Установка соединения с SQLite
@@ -72,23 +65,25 @@ MainWindow::MainWindow(QWidget *parent)
     // Background
 
     //title
-    QFont font;
-    font.setPointSize(24);
-    QLabel *title = new QLabel("\t  Добро пожаловать в\nВиртуальный квест по основам языка C#",this);
-    title->setFont(font);
-    title->resize(600,90);
-    title->move(120,30);
-    title->show();
+  //QFont font;
+  //font.setPointSize(24);
+  //QLabel *title = new QLabel("\t  Добро пожаловать в\nВиртуальный квест по основам языка C#",this);
+  //title->setFont(font);
+  //title->resize(600,90);
+  //title->move(120,30);
+  //title->show();
 
     //Регистрация пользователя
     QPushButton *sign = new QPushButton("Регистрация", this);
-    sign->move(420,250);
+    sign->resize(120,40);
+    sign->move(450,220);
     registrationWindow = new RegistrationWindow();
     connect(sign, &QPushButton::clicked, this, &MainWindow::showRegistrationWindow);
 
     //Вход пользователя
     QPushButton *sin = new QPushButton("Войти", this);
-    sin->move(250, 250);
+    sin->resize(120,40);
+    sin->move(250, 220);
     startwindow = new StartWindow();
     connect(sin, &QPushButton::clicked, this, &MainWindow::showStartWindow);
 
@@ -97,7 +92,7 @@ MainWindow::MainWindow(QWidget *parent)
     QMediaPlayer* play = new QMediaPlayer;
     QAudioOutput* audioOutput = new QAudioOutput;
     play->setAudioOutput(audioOutput);
-    play->setSource(QUrl("D:/Music/rise.wav"));  // Укажите полный путь к вашему аудиофайлу
+    play->setSource(QUrl("D:/Music/cyber.mp3"));  // Укажите полный путь к вашему аудиофайлу
     play->play();
 
 ////////////////////////////////////////////////Кнопочки
@@ -110,12 +105,11 @@ MainWindow::~MainWindow()
     delete parent();
 }
 
-// Start programms
-/////////////////////////////////Справка
-QString imagePath = ":/img/app.ico";
+QString imagePath = ":/img/logo.png";
+
 //////////////////////////////////aboutPogram
 QString text = QString(
-                   "<h3>Программа VirtualQuizCsharp</h3>"
+                   "<h2>Программа VirtualQuizCsharp</h2>"
                    "<center><p><img src='%1' width='64' height='64'></p></center>"
                    "<p>Version 1.0</p>"
                    "<p>Autor: Dubnovitskiy Dmitry</p>"
