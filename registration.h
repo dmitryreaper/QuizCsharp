@@ -16,4 +16,5 @@ public:
 
 private slots:
     void onRegisterClicked();  // Обработчик регистрации
+
 };

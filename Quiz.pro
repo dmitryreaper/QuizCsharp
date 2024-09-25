@@ -14,12 +14,14 @@ ICON = img/app.ico
 
 SOURCES += \
     connect.cpp \
+    generalwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     registration.cpp
 
 HEADERS += \
     connect.h \
+    generalwindow.h \
     mainwindow.h \
     registration.h
 

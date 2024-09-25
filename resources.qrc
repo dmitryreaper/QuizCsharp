@@ -4,5 +4,6 @@
 	<file>img/tut.jpg</file>
 	<file>img/back.png</file>
 	<file>img/logo.png</file>	
+	<file>img/giphy.gif</file>	
     </qresource>
 </RCC>

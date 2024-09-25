@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+
 //#include "registration.h"
 //#include "connect.h"
 
@@ -8,8 +9,15 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
     this->setFixedSize(800,460);
-    this->setStyleSheet("QMainWindow { background-image: url(:/img/back.png); background-position: center; background-repeat: no-repeat; }");
+    //this->setStyleSheet("QMainWindow { background-image: url(:/img/giphy.gif); background-position: center; background-repeat: no-repeat; }");
 
+    QLabel *label = new QLabel(this);  // Создаем виджет QLabel
+    QMovie *movie = new QMovie(":/img/giphy.gif");  // Загружаем GIF-файл
+
+    label->setMovie(movie);
+    movie->start();
+    // Устанавливаем центральный виджет для QMainWindow
+    setCentralWidget(label);
 
     // Установка соединения с SQLite
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
@@ -65,13 +73,13 @@ MainWindow::MainWindow(QWidget *parent)
     // Background
 
     //title
-  //QFont font;
-  //font.setPointSize(24);
-  //QLabel *title = new QLabel("\t  Добро пожаловать в\nВиртуальный квест по основам языка C#",this);
-  //title->setFont(font);
-  //title->resize(600,90);
-  //title->move(120,30);
-  //title->show();
+    //QFont font;
+    //font.setPointSize(24);
+    //QLabel *title = new QLabel("\t  Добро пожаловать в\nВиртуальный квест по основам языка C#",this);
+    //title->setFont(font);
+    //title->resize(600,90);
+    //title->move(120,30);
+    //title->show();
 
     //Регистрация пользователя
     QPushButton *sign = new QPushButton("Регистрация", this);
@@ -92,11 +100,9 @@ MainWindow::MainWindow(QWidget *parent)
     QMediaPlayer* play = new QMediaPlayer;
     QAudioOutput* audioOutput = new QAudioOutput;
     play->setAudioOutput(audioOutput);
-    play->setSource(QUrl("D:/Music/cyber.mp3"));  // Укажите полный путь к вашему аудиофайлу
+    play->setSource(QUrl("D:/Music/rise.mp3"));  // Укажите полный путь к вашему аудиофайлу
     play->play();
 
-////////////////////////////////////////////////Кнопочки
-///
 }
 
 //деструктор
@@ -109,11 +115,11 @@ QString imagePath = ":/img/logo.png";
 
 //////////////////////////////////aboutPogram
 QString text = QString(
-                   "<h2>Программа VirtualQuizCsharp</h2>"
+                   "<h2>Программа Виртуальный квест по основам C#</h2>"
                    "<center><p><img src='%1' width='64' height='64'></p></center>"
-                   "<p>Version 1.0</p>"
-                   "<p>Autor: Dubnovitskiy Dmitry</p>"
-                   "<p>Github: <a href='https://github.com/dmitryreaper'>dmitryreaper</a></p>"
+                   "<center><p>Version 1.0</p></center>"
+                   "<center><p>Autor: Dubnovitskiy Dmitry</p></center>"
+                   "<center><p>Github: <a href='https://github.com/dmitryreaper'>dmitryreaper</a></p></center>"
                    ).arg(imagePath);
 
 //function
@@ -134,3 +140,4 @@ void MainWindow::showStartWindow()
 {
     startwindow->show();  // Показываем окно регистрации
 }
+

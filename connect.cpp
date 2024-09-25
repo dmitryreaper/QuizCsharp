@@ -37,12 +37,18 @@ StartWindow::StartWindow()
 
     setLayout(layout);
 
-    // Обработчик нажатия кнопки регистрации (по желанию)
+    // Обработчик нажатия кнопки входа (по желанию)
     connect(registerButton, &QPushButton::clicked, this, &StartWindow::onStartClicked);
+    connect(registerButton, &QPushButton::clicked, this, &StartWindow::StartGeneralWindow);
 }
 
 void StartWindow::onStartClicked()
 {
-    // Логика регистрации
+    // Логика входа
     QMessageBox::information(this, "Вход", "Вход успешен!");
+}
+
+void StartWindow::StartGeneralWindow()
+{
+    this->close();
 }

@@ -16,4 +16,5 @@ public:
 
 private slots:
     void onStartClicked();  // Обработчик регистрации
+    void StartGeneralWindow(); // Запуск главного окна
 };
