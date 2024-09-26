@@ -1,5 +1,9 @@
 QT       += core gui sql
 
+LIBS += -L/usr/include/qt6/
+
+INCLUDEPATH += /usr/include/qt6/QtMultimedia/
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -17,13 +21,15 @@ SOURCES += \
     generalwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    registration.cpp
+    registration.cpp \
+    tasks.cpp
 
 HEADERS += \
     connect.h \
     generalwindow.h \
     mainwindow.h \
-    registration.h
+    registration.h \
+    tasks.h
 
 FORMS +=
 

@@ -12,7 +12,8 @@
 #include <QProgressBar>
 #include <QTextEdit>
 #include <QHBoxLayout>
-#include <QMovie>
+#include <QPixmap>
+#include "tasks.h"
 
 class GeneralWindow : public QMainWindow
 {

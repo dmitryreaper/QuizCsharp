@@ -115,7 +115,7 @@ QString imagePath = ":/img/logo.png";
 
 //////////////////////////////////aboutPogram
 QString text = QString(
-                   "<h2>Программа Виртуальный квест по основам C#</h2>"
+                   "<center><h2>Программа Виртуальный квест по основам C#</h2></center>"
                    "<center><p><img src='%1' width='64' height='64'></p></center>"
                    "<center><p>Version 1.0</p></center>"
                    "<center><p>Autor: Dubnovitskiy Dmitry</p></center>"
