@@ -1,5 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
 #include "registration.h"
 #include "connect.h"
 #include <QMainWindow>
@@ -7,8 +8,6 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QDebug>
-#include <QMediaPlayer>
-#include <QAudioOutput>
 #include <QMenuBar>
 #include <QMovie>
 
@@ -17,7 +16,6 @@
 #include <QPalette>
 #include <QBrush>
 #include <QResizeEvent>
-
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -38,4 +36,4 @@ private slots:
 
 };
 
-#endif // MAINWINDOW_H
+#endif

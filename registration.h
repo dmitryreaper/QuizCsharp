@@ -9,7 +9,7 @@
 
 class RegistrationWindow : public QMainWindow
 {
-    Q_OBJECT
+    Q_OBJECT;
 
 public:
     RegistrationWindow();

@@ -10,13 +10,13 @@ MainWindow::MainWindow(QWidget *parent)
     this->setFixedSize(800,460);
     //this->setStyleSheet("QMainWindow { background-image: url(:/img/giphy.gif); background-position: center; background-repeat: no-repeat; }");
 
-  //QLabel *label = new QLabel(this);  // Создаем виджет QLabel
-  //QMovie *movie = new QMovie(":/img/giphy.gif");  // Загружаем GIF-файл
+    QLabel *label = new QLabel(this);  // Создаем виджет QLabel
+    QMovie *movie = new QMovie(":/img/giphy.gif");  // Загружаем GIF-файл
 
-  //label->setMovie(movie);
-  //movie->start();
-  //// Устанавливаем центральный виджет для QMainWindow
-  //setCentralWidget(label);
+    label->setMovie(movie);
+    movie->start();
+    // Устанавливаем центральный виджет для QMainWindow
+    setCentralWidget(label);
 
     // Установка соединения с SQLite
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
@@ -97,11 +97,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     //D:/Music/rise.wav
     //Music start Registration
-    QMediaPlayer* play = new QMediaPlayer;
-    QAudioOutput* audioOutput = new QAudioOutput;
-    play->setAudioOutput(audioOutput);
-    play->setSource(QUrl("D:/Music/rise.mp3"));  // Укажите полный путь к вашему аудиофайлу
-    play->play();
+    //QMediaPlayer* play = new QMediaPlayer;
+    //QAudioOutput* audioOutput = new QAudioOutput;
+    //play->setAudioOutput(audioOutput);
+    //play->setSource(QUrl("D:/Music/rise.mp3"));  // Укажите полный путь к вашему аудиофайлу
+    //play->play();
 
 }
 

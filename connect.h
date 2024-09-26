@@ -12,6 +12,7 @@ class StartWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
     StartWindow();
 
 private slots:
