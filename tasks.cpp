@@ -1,3 +1,7 @@
 #include "tasks.h"
 
-tasks::tasks() {}
+TaskWindow::TaskWindow()
+{
+
+}
+

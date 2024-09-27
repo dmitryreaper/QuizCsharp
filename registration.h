@@ -15,6 +15,6 @@ public:
     RegistrationWindow();
 
 private slots:
-    void onRegisterClicked();  // Обработчик регистрации
 
+    void onRegisterClicked();  // Обработчик регистрации
 };
