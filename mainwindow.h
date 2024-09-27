@@ -10,6 +10,9 @@
 #include <QDebug>
 #include <QMenuBar>
 #include <QMovie>
+//media
+#include <QAudioOutput>
+#include <QMediaPlayer>
 
 #include <QPixmap>
 #include <QLabel>

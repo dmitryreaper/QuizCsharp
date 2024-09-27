@@ -1,8 +1,4 @@
-QT       += core gui sql
-
-LIBS += -L/usr/include/qt6/
-
-INCLUDEPATH += /usr/include/qt6/QtMultimedia/
+QT       += core gui sql multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
