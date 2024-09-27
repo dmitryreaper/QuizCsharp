@@ -97,11 +97,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     //D:/Music/rise.wav
     //Music start Registration
-    //QMediaPlayer* play = new QMediaPlayer;
-    //QAudioOutput* audioOutput = new QAudioOutput;
-    //play->setAudioOutput(audioOutput);
-    //play->setSource(QUrl("D:/Music/rise.mp3"));  // Укажите полный путь к вашему аудиофайлу
-    //play->play();
+    QMediaPlayer* play = new QMediaPlayer;
+    QAudioOutput* audioOutput = new QAudioOutput;
+    play->setAudioOutput(audioOutput);
+    play->setSource(QUrl("D:/Music/rise.mp3"));  // Укажите полный путь к вашему аудиофайлу
+    play->play();
 
 }
 
