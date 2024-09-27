@@ -69,17 +69,13 @@ MainWindow::MainWindow(QWidget *parent)
     // Устанавливаем меню на главное окно
     setMenuBar(menuBar);
 
-    // Background
-
-    //title
-    //QFont font;
-    //font.setPointSize(24);
-    //QLabel *title = new QLabel("\t  Добро пожаловать в\nВиртуальный квест по основам языка C#",this);
-    //title->setFont(font);
-    //title->resize(600,90);
-    //title->move(120,30);
-    //title->show();
-
+  ////title
+  //QFont font("Arial", 24, QFont::Bold);
+  //QLabel *title = new QLabel("\t  Добро пожаловать в\nВиртуальный квест по основам языка C#", this);
+  //title->setFont(font);
+  //title->setStyleSheet("QLabel { color : white; }");
+  //title->resize(700,100);
+  //title->move(80,30);
 
     //Регистрация пользователя
     QPushButton *sign = new QPushButton("Регистрация", this);
@@ -96,13 +92,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(sin, &QPushButton::clicked, this, &MainWindow::showStartWindow);
 
     //D:/Music/rise.wav
-    //Music start Registration
-    QMediaPlayer* play = new QMediaPlayer;
-    QAudioOutput* audioOutput = new QAudioOutput;
-    play->setAudioOutput(audioOutput);
-    play->setSource(QUrl("D:/Music/rise.mp3"));  // Укажите полный путь к вашему аудиофайлу
-    play->play();
-
+  ////Music start Registration
+  //QMediaPlayer* play = new QMediaPlayer;
+  //QAudioOutput* audioOutput = new QAudioOutput;
+  //play->setAudioOutput(audioOutput);
+  //play->setSource(QUrl("D:/Music/rise.mp3"));  // Укажите полный путь к вашему аудиофайлу
+  //play->play();
 }
 
 //деструктор

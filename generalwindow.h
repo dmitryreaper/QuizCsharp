@@ -13,17 +13,16 @@
 #include <QTextEdit>
 #include <QHBoxLayout>
 #include <QPixmap>
-#include "tasks.h"
 
 class GeneralWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit GeneralWindow(QWidget *parent = nullptr);
+    GeneralWindow(QWidget *parent = nullptr);
 
 private:
-         // Здесь можно добавить элементы интерфейса нового окна
+
 };
 
 #endif // GENERALWINDOW_H
