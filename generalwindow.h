@@ -22,8 +22,10 @@ public:
     GeneralWindow(QWidget *parent = nullptr);
 
 private:
-    QWidget *taskwinow;
     QWidget *profileWindow;
+    QWidget *achivWindow;
+    QWidget *taskWindow;
+    QWidget *testwindow;
 };
 
 #endif // GENERALWINDOW_H
