@@ -19,16 +19,16 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(label);
 
     // Установка соединения с SQLite
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("users.db");
+  //QSqlDatabase dbb = QSqlDatabase::addDatabase("QSQLITE");
+  //dbb.setDatabaseName("users.db");
 
-    // Открытие соединения
-    if (db.open()) {
-        qDebug() << "Connect to database!" << "\nDATABASE:" << db.databaseName();
-    }
-    else {
-        qDebug() << db.lastError().text();
-    }
+  //// Открытие соединения
+  //if (dbb.open()) {
+  //    qDebug() << "Connect to database!" << "\nDATABASE:" << dbb.databaseName();
+  //}
+  //else {
+  //    qDebug() << dbb.lastError().text();
+  //}
 
     // Создаем строку меню
     QMenuBar *menuBar = new QMenuBar(this);

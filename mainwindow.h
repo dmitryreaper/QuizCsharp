@@ -4,9 +4,6 @@
 #include "registration.h"
 #include "connect.h"
 #include <QMainWindow>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
 #include <QDebug>
 #include <QMenuBar>
 #include <QMovie>

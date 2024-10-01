@@ -3,54 +3,92 @@
 #include <QApplication>
 #include <QWindow>
 
-StartWindow::StartWindow()
-{
+StartWindow::StartWindow() {
     setWindowTitle("Окно входа");
-    setFixedSize(300,200);
+    setFixedSize(300, 200);
     QApplication::setStyle("Fusion");
 
-    //добавляем поля и кнопку регистрации
     QVBoxLayout *layout = new QVBoxLayout(this);
 
-    QLineEdit *usernameEdit = new QLineEdit(this);
+    usernameEdit = new QLineEdit(this);
     usernameEdit->setPlaceholderText("Введите имя пользователя");
-    usernameEdit->resize(170,30);
+    usernameEdit->resize(170, 30);
 
-    QLineEdit *email = new QLineEdit(this);
-    email->setPlaceholderText("Введите email");
-    email->resize(170,30);
-    QPushButton *registerButton = new QPushButton("Войти", this);
+    emailEdit = new QLineEdit(this);
+    emailEdit->setPlaceholderText(("Введите ваш email"));
+    emailEdit->resize(170, 30);
 
-    QLineEdit *passwordEdit = new QLineEdit(this);
+    passwordEdit = new QLineEdit(this);
     passwordEdit->setPlaceholderText("Введите пароль");
     passwordEdit->setEchoMode(QLineEdit::Password);
-    passwordEdit->resize(170,30);
+    passwordEdit->resize(170, 30);
+
+    QPushButton *registerButton = new QPushButton("Войти", this);
+
+    //Размещение
+    usernameEdit->move(70,50);
+    emailEdit->move(70,90);
+    passwordEdit->move(70,130);
+    registerButton->move(100,170);
 
     layout->addWidget(usernameEdit);
+    layout->addWidget(emailEdit);
     layout->addWidget(passwordEdit);
     layout->addWidget(registerButton);
 
-    usernameEdit->move(70,50);
-    email->move(70,90);
-    passwordEdit->move(70,130);
-
-    registerButton->move(100,170);
-
     setLayout(layout);
 
-    // Обработчик нажатия кнопки входа (по желанию)
+    // Подключаем кнопку к слоту
     connect(registerButton, &QPushButton::clicked, this, &StartWindow::onStartClicked);
 }
 
-void StartWindow::onStartClicked()
-{
-    // Логика входа
-    QMessageBox::information(this, "Вход", "Вход успешен!");
+void StartWindow::onStartClicked() {
+    // Получаем введенные данные
+    QString username = usernameEdit->text();
+    QString email = emailEdit->text();
+    QString password = passwordEdit->text();
 
-    // Открываем новое окно
-    GeneralWindow *generalWindow = new GeneralWindow();
-    generalWindow->show();
+    // Подключаемся к базе данных
+    QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection");
+    if (!db.isOpen()) {
+        db = QSqlDatabase::addDatabase("QSQLITE");
+        db.setDatabaseName("C:/Users/Dmitry/users.db");
 
-    // Закрываем текущее окно
-    this->close();
+        if (!db.open()) {
+            qDebug() << "Error opening database:" << db.lastError().text();
+            return;
+        }
+    }
+    // Вывод информации о базе данных
+    qDebug() << "Database name:" << db.databaseName();
+    qDebug() << "Is database open?" << db.isOpen();
+
+    // Проверяем наличие пользователя в базе данных
+    QSqlQuery query;
+    query.prepare("SELECT name, email, password FROM users WHERE name = :name AND email = :email AND password = :password;");
+    query.bindValue(":name", username);
+    query.bindValue(":email", email);
+    query.bindValue(":password", password);
+    query.exec();
+
+    if (!query.exec()) {
+        QMessageBox::warning(this, "Ошибка", "Ошибка выполнения запроса: " + query.lastError().text());
+        return;
+    }
+
+    if (query.next()) {
+        // Если пользователь найден, продолжаем
+        QMessageBox::information(this, "Вход", "Вход успешен!");
+
+        // Открываем новое окно
+        GeneralWindow *generalWindow = new GeneralWindow();
+        generalWindow->show();
+
+        // Закрываем текущее окно
+        this->close();
+    }
+    else {
+        // Если пользователь не найден, выводим сообщение об ошибке
+        QMessageBox::warning(this, "Ошибка", "Неправильное имя пользователя, email или пароль.");
+    }
 }
