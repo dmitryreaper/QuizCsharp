@@ -7,6 +7,12 @@
 #include <QMessageBox>
 #include <QMainWindow>
 
+//debug and connect database
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
+
 class RegistrationWindow : public QMainWindow
 {
     Q_OBJECT;
@@ -17,4 +23,9 @@ public:
 private slots:
 
     void onRegisterClicked();  // Обработчик регистрации
+
+private:
+    QLineEdit *usernameEdit;
+    QLineEdit *emailEdit;
+    QLineEdit *passwordEdit;
 };
