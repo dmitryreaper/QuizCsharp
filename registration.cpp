@@ -54,7 +54,7 @@ void RegistrationWindow::onRegisterClicked()
     QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection");
     if (!db.isOpen()) {
         db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("C:/Users/Dmitry/users.db");
+        db.setDatabaseName(":/users.db");
 
         if (!db.open()) {
             qDebug() << "Error opening database:" << db.lastError().text();
