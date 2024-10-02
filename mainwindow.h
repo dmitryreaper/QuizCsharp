@@ -7,7 +7,6 @@
 #include <QDebug>
 #include <QMenuBar>
 #include <QMovie>
-//media
 
 #include <QPixmap>
 #include <QLabel>
@@ -25,6 +24,7 @@ public:
 private:
     RegistrationWindow *registrationWindow;
     StartWindow *startwindow;
+    MainWindow *window;
 
 private slots:
     void showAboutProgramm();

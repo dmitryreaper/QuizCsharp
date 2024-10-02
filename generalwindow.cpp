@@ -13,15 +13,15 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
     label->setPixmap(pixmap);
     setCentralWidget(label);
 
-    QLabel *Name = new QLabel("Name: ", this);
+    QLabel *Name = new QLabel("Имя: ", this);
     Name->setFont(font);
     Name->resize(50,50);
     Name->move(50,5);
     Name->setStyleSheet("QLabel { color : white; }");
 
-    QLabel *Level = new QLabel("Level: ", this);
+    QLabel *Level = new QLabel("Очки игрока: ", this);
     Level->setFont(font);
-    Level->resize(50,50);
+    Level->resize(100,50);
     Level->move(200,5);
     Level->setStyleSheet("QLabel { color : white; }");
 
@@ -154,7 +154,7 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
             profileLabel->move(400, 10);
             profileLabel->setStyleSheet("color: white;");
 
-            QLabel *Name = new QLabel("Name: ", profileWindow);
+            QLabel *Name = new QLabel("Имя: ", profileWindow);
             Name->setFont(QFont("Arial", 14, QFont::Bold));
             Name->move(100,50);
             Name->setStyleSheet("color : white;");
@@ -169,7 +169,7 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
             Date->move(100,150);
             Date->setStyleSheet("color : white;");
 
-            QLabel *Level = new QLabel("Уровень игрока: ", profileWindow);
+            QLabel *Level = new QLabel("Очки игрока: ", profileWindow);
             Level->setFont(QFont("Arial", 14, QFont::Bold));
             Level->move(100,200);
             Level->setStyleSheet("color : white;");
@@ -210,7 +210,7 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
             profileLabel->move(400, 10);
             profileLabel->setStyleSheet("color: white;");
 
-            QLabel *Achiv = new QLabel("Name: ", achivWindow);
+            QLabel *Achiv = new QLabel("Название достижения: ", achivWindow);
             Achiv->setFont(QFont("Arial", 14, QFont::Bold));
             Achiv->move(100,50);
             Achiv->setStyleSheet("color : white;");
@@ -222,6 +222,5 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
             achivWindow->raise();
             achivWindow->activateWindow();
         }
-
     });
 }
