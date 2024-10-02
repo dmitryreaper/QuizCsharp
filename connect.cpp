@@ -2,8 +2,10 @@
 #include "generalwindow.h"
 #include <QApplication>
 #include <QWindow>
+#include "mainwindow.h"
 
-StartWindow::StartWindow() {
+StartWindow::StartWindow(MainWindow *window) : registration(window){
+
     setWindowTitle("Окно входа");
     setFixedSize(300, 200);
     QApplication::setStyle("Fusion");
@@ -52,13 +54,18 @@ void StartWindow::onStartClicked() {
     QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection");
     if (!db.isOpen()) {
         db = QSqlDatabase::addDatabase("QSQLITE");
+<<<<<<< HEAD
+        db.setDatabaseName("/home/dima/Src/QuizCsharp/users.db");
+=======
         db.setDatabaseName("C:/Users/Dmitry/users.db");
+>>>>>>> main
 
         if (!db.open()) {
             qDebug() << "Error opening database:" << db.lastError().text();
             return;
         }
     }
+
     // Вывод информации о базе данных
     qDebug() << "Database name:" << db.databaseName();
     qDebug() << "Is database open?" << db.isOpen();
@@ -79,6 +86,11 @@ void StartWindow::onStartClicked() {
     if (query.next()) {
         // Если пользователь найден, продолжаем
         QMessageBox::information(this, "Вход", "Вход успешен!");
+
+        // Закрываем окно MainWindow, если оно открыто
+        if (registration) {
+            registration->close();
+        }
 
         // Открываем новое окно
         GeneralWindow *generalWindow = new GeneralWindow();
