@@ -54,7 +54,11 @@ void RegistrationWindow::onRegisterClicked()
     QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection");
     if (!db.isOpen()) {
         db = QSqlDatabase::addDatabase("QSQLITE");
+<<<<<<< HEAD
         db.setDatabaseName("/home/dima/Src/QuizCsharp/users.db");
+=======
+        db.setDatabaseName("C:/Users/Dmitry/users.db");
+>>>>>>> main
 
         if (!db.open()) {
             qDebug() << "Error opening database:" << db.lastError().text();
