@@ -8,6 +8,34 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
 
     this->setFixedSize(1280,720);
 
+    //Меню и кнопки в меню
+    QMenuBar *menuBar = new QMenuBar(this);
+    QMenu *Menu = new QMenu("Файл", this);
+
+    QAction *exit = new QAction("Выход", this);
+
+    Menu->addSeparator();  // Разделитель
+    Menu->addAction(exit);
+
+    connect(exit, &QAction::triggered, this, &QMainWindow::close);
+
+    menuBar->addMenu(Menu);
+
+    QMenu *helpMenu = new QMenu("Справка", this);
+    QAction *aboutAction = new QAction("О программе", this);
+    QAction *aboutProgramm = new QAction("Справка программы", this);
+
+    helpMenu->addAction(aboutAction);
+    helpMenu->addAction(aboutProgramm);
+
+    connect(aboutAction, &QAction::triggered, this, &GeneralWindow::showAbout);
+    connect(aboutProgramm, &QAction::triggered, this, &GeneralWindow::showAboutProg);
+
+    menuBar->addMenu(helpMenu);
+
+    setMenuBar(menuBar);
+
+    // background color
     QLabel *label = new QLabel(this);
     QPixmap pixmap(":/img/back.jpg");
     label->setPixmap(pixmap);
@@ -223,4 +251,24 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
             achivWindow->activateWindow();
         }
     });
+}
+
+
+QString igs = ":/img/logo.png";
+
+QString str = QString(
+                   "<center><h2>Программа Виртуальный квест по основам C#</h2></center>"
+                   "<center><p><img src='%1' width='64' height='64'></p></center>"
+                   "<center><p>Version 1.0</p></center>"
+                   "<center><p>Autor: Dubnovitskiy Dmitry</p></center>"
+                   "<center><p>Github: <a href='https://github.com/dmitryreaper'>dmitryreaper</a></p></center>"
+                   ).arg(igs);
+
+//function
+void GeneralWindow::showAbout() {
+    QMessageBox::about(this, "О программе", str); // О программе
+}
+
+void GeneralWindow::showAboutProg() {
+    QMessageBox::about(this, "Использование", "<center>Справка по использованию программы</center>"); // Cправка
 }

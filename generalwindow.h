@@ -6,6 +6,7 @@
 #include <QApplication>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QMenuBar>
 #include <QWidget>
 #include <QLabel>
 #include <QMessageBox>
@@ -26,6 +27,10 @@ private:
     QWidget *achivWindow;
     QWidget *taskWindow;
     QWidget *testwindow;
+
+private slots:
+    void showAboutProg();
+    void showAbout();
 };
 
 #endif // GENERALWINDOW_H

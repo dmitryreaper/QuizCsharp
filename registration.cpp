@@ -54,11 +54,7 @@ void RegistrationWindow::onRegisterClicked()
     QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection");
     if (!db.isOpen()) {
         db = QSqlDatabase::addDatabase("QSQLITE");
-<<<<<<< HEAD
         db.setDatabaseName("/home/dima/Src/QuizCsharp/users.db");
-=======
-        db.setDatabaseName("C:/Users/Dmitry/users.db");
->>>>>>> main
 
         if (!db.open()) {
             qDebug() << "Error opening database:" << db.lastError().text();
@@ -75,8 +71,7 @@ void RegistrationWindow::onRegisterClicked()
     query.bindValue(":email", email);
     if (!query.exec()) {
         QMessageBox::warning(this, "Ошибка", "Ошибка выполнения запроса: " + query.lastError().text());
-        return;
-    }
+        return; }
 
     // Если пользователь уже существует
     if (query.next()) {
