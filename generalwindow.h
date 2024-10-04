@@ -14,6 +14,7 @@
 #include <QTextEdit>
 #include <QHBoxLayout>
 #include <QPixmap>
+#include <QRadioButton>
 
 class GeneralWindow : public QMainWindow
 {
@@ -27,6 +28,9 @@ private:
     QWidget *achivWindow;
     QWidget *taskWindow;
     QWidget *testwindow;
+    QWidget *quiz;
+
+    //option
 
 private slots:
     void showAboutProg();
