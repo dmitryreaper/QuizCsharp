@@ -21,7 +21,7 @@ class GeneralWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    GeneralWindow(QWidget *parent = nullptr);
+    GeneralWindow(const QString &username, QWidget *parent = nullptr);
 
 private:
     QWidget *profileWindow;

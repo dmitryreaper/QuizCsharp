@@ -17,15 +17,15 @@ SOURCES += \
     generalwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    registration.cpp \
-    tasks.cpp
+    quiz.cpp \
+    registration.cpp
 
 HEADERS += \
     connect.h \
     generalwindow.h \
     mainwindow.h \
-    registration.h \
-    tasks.h
+    quiz.h \
+    registration.h
 
 FORMS +=
 
