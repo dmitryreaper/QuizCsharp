@@ -1,7 +1,9 @@
 #include "generalwindow.h"
+#include "quiz.h"
 
 // General Window
-GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWindow(nullptr), achivWindow(nullptr), taskWindow(nullptr), quiz(nullptr)
+GeneralWindow::GeneralWindow(const QString &username, QWidget *parent)
+    : QMainWindow(parent), profileWindow(nullptr), achivWindow(nullptr), taskWindow(nullptr), quiz(nullptr)
 {
     setWindowTitle("Quiz");
     QFont font("Arial", 12, QFont::Bold);
@@ -41,16 +43,16 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
     label->setPixmap(pixmap);
     setCentralWidget(label);
 
-    QLabel *Name = new QLabel("Имя: ", this);
+    QLabel *Name = new QLabel("Имя:  " + username, this);
     Name->setFont(font);
-    Name->resize(50,50);
+    Name->resize(200,50);
     Name->move(50,5);
     Name->setStyleSheet("QLabel { color : white; }");
 
     QLabel *Level = new QLabel("Очки игрока: ", this);
     Level->setFont(font);
-    Level->resize(100,50);
-    Level->move(200,5);
+    Level->resize(200,50);
+    Level->move(250,5);
     Level->setStyleSheet("QLabel { color : white; }");
 
     // Кнопки и вызовы окон (виджет)
@@ -85,9 +87,11 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
 
             QLabel *profileLabel = new QLabel("Выбор задания", taskWindow);
             profileLabel->setFont(QFont("Arial", 14, QFont::Bold));
-            profileLabel->move(400, 10);
+            profileLabel->move(450, 10);
             profileLabel->setStyleSheet("color: white;");
 
+
+            ////////////////////Задание 1 ////////////////////
             QPushButton *taskbut1 = new QPushButton("Базовые знания языка C# - Типы данных, ветвления, функции, циклы", taskWindow);
             taskbut1->setFont(QFont("Arial", 14, QFont::Bold));
             taskbut1->setSizeIncrement(800,10);
@@ -117,101 +121,46 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
                     TestLabel->move(400, 10);
                     TestLabel->setStyleSheet("color: white;");
 
+                    ////////////////////Тема 1 ////////////////////
                     QPushButton *taskbut2 = new QPushButton("Основы языка", testwindow);
                     taskbut2->setFont(QFont("Arial", 14, QFont::Bold));
                     taskbut2->setSizeIncrement(800,10);
                     taskbut2->move(10,40);
                     taskbut2->setStyleSheet("color: black;");
                     connect(taskbut2, &QPushButton::clicked, this, [this]() {
-                    if(quiz == nullptr || !quiz->isVisible()) {
-
-                        if(testwindow != nullptr && testwindow->isVisible()){
-                            testwindow->close();
-                        }
-
-                        quiz = new QWidget(this);
-                        quiz->setFixedSize(1000, 600);
-                        quiz->move(150,100);
-                        quiz->setStyleSheet("background-color: rgba(255, 255, 255, 50);");
-
-                        QLabel *TestLabel = new QLabel("Какой язык программирования мы изучаем ?", quiz);
-                        TestLabel->setFont(QFont("Arial", 14, QFont::Bold));
-                        TestLabel->move(300, 10);
-                        TestLabel->setStyleSheet("color: black;");
-
-                        QRadioButton *option1 = new QRadioButton("Kotlin", quiz);
-                        option1->setFont(QFont("Arial", 14, QFont::Bold));
-                        option1->setSizeIncrement(800,10);
-                        option1->move(50,50);
-                        option1->setStyleSheet("color: black;");
-                        QRadioButton *option2 = new QRadioButton("Nodejs", quiz);
-                        option2->setFont(QFont("Arial", 14, QFont::Bold));
-                        option2->setSizeIncrement(800,10);
-                        option2->move(50,100);
-                        option2->setStyleSheet("color: black;");
-                        QRadioButton *option3 = new QRadioButton("C#", quiz);
-                        option3->setFont(QFont("Arial", 14, QFont::Bold));
-                        option3->setSizeIncrement(800,10);
-                        option3->move(50,150);
-                        option3->setStyleSheet("color: black;");
-                        QRadioButton *option4 = new QRadioButton("Assembler", quiz);
-                        option4->setFont(QFont("Arial", 14, QFont::Bold));
-                        option4->setSizeIncrement(800,10);
-                        option4->move(50,200);
-                        option4->setStyleSheet("color: black;");
-                        QRadioButton *option5 = new QRadioButton("C/C++", quiz);
-                        option5->setFont(QFont("Arial", 14, QFont::Bold));
-                        option5->setSizeIncrement(800,10);
-                        option5->move(50,250);
-                        option5->setStyleSheet("color: black;");
-                        QRadioButton *option6 = new QRadioButton("Haskell", quiz);
-                        option6->setFont(QFont("Arial", 14, QFont::Bold));
-                        option6->setSizeIncrement(800,10);
-                        option6->move(50,300);
-                        option6->setStyleSheet("color: black;");
-
-                        QPushButton *submitButton = new QPushButton("Ответить" , quiz);
-                        submitButton->setStyleSheet("color: black;");
-                        submitButton->setFont(QFont("Arial", 14, QFont::Bold));
-                        submitButton->resize(120,25);
-                        submitButton->move(850, 550);
-
-                        connect(submitButton, &QPushButton::clicked, [=]() {
-                            if (option3->isChecked()) {
-                                QMessageBox::information(this, "Результат", "Верно! Язык C#\n +5 очков");
-                            } else {
-                                QMessageBox::information(this, "Результат", "Неверно. Попробуйте еще раз.");
-                            }
-                        });
-
-                        quiz->show();
-
-                    }
-                        else {
+                        if (quiz == nullptr || !quiz->isVisible()) {
+                            if(testwindow!= nullptr || testwindow->isVisible()){testwindow->close();}
+                            quiz = new Quiz(this);
+                            quiz->setFixedSize(1000, 600);
+                            quiz->move(150, 100);
+                            quiz->show();
+                        } else {
                             quiz->show();
                             quiz->raise();
                             quiz->activateWindow();
                         }
                     });
 
+                    ////////////////////Тема 2 ////////////////////
                     QPushButton *taskbut1 = new QPushButton("Типы данных", testwindow);
                     taskbut1->setFont(QFont("Arial", 14, QFont::Bold));
                     taskbut1->setSizeIncrement(800,10);
                     taskbut1->move(10,80);
                     taskbut1->setStyleSheet("color: black;");
 
+                    ////////////////////Тема 3 ////////////////////
                     QPushButton *taskbut3 = new QPushButton("Ветвления", testwindow);
                     taskbut3->setFont(QFont("Arial", 14, QFont::Bold));
                     taskbut3->setSizeIncrement(800,10);
                     taskbut3->move(10,120);
                     taskbut3->setStyleSheet("color: black;");
 
+                    ////////////////////Тема 3 ////////////////////
                     QPushButton *taskbut4 = new QPushButton("Циклы", testwindow);
                     taskbut4->setFont(QFont("Arial", 14, QFont::Bold));
                     taskbut4->setSizeIncrement(800,10);
                     taskbut4->move(10,160);
                     taskbut4->setStyleSheet("color: black;");
-
 
                     testwindow->show();
                 }
@@ -222,24 +171,30 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
                 }
             });
 
+            ////////////////////Задание 2 ////////////////////
             QPushButton *taskbut2 = new QPushButton("Написание простых консольных приложений", taskWindow);
             taskbut2->setFont(QFont("Arial", 14, QFont::Bold));
             taskbut2->setSizeIncrement(800,10);
             taskbut2->move(10,80);
             taskbut2->setStyleSheet("color: black;");
 
+
+            ////////////////////Задание 3 ////////////////////
             QPushButton *taskbut3 = new QPushButton("Создание оконных приложений ", taskWindow);
             taskbut3->setFont(QFont("Arial", 14, QFont::Bold));
             taskbut3->setSizeIncrement(800,10);
             taskbut3->move(10,120);
             taskbut3->setStyleSheet("color: black;");
 
+
+            ////////////////////Задание 4 ////////////////////
             QPushButton *taskbut4 = new QPushButton("Продвинутый уровень создания оконных приложений без использования конструктора", taskWindow);
             taskbut4->setFont(QFont("Arial", 14, QFont::Bold));
             taskbut4->setSizeIncrement(800,10);
             taskbut4->move(10,160);
             taskbut4->setStyleSheet("color: black;");
 
+            ////////////////////Задание 5 ////////////////////
             QPushButton *taskbut5 = new QPushButton("Использование С# в Web - Написание приложений для браузера", taskWindow);
             taskbut5->setFont(QFont("Arial", 14, QFont::Bold));
             taskbut5->setSizeIncrement(800,10);
@@ -319,6 +274,8 @@ GeneralWindow::GeneralWindow(QWidget *parent) : QMainWindow(parent), profileWind
         }
     });
 
+
+    ////////////////////Достижения////////////////////
     QPushButton *Achiv = new QPushButton("Достижения", this);
     Achiv->setFont(font);
     Achiv->resize(120,25);
