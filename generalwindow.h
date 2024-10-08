@@ -15,6 +15,7 @@
 #include <QHBoxLayout>
 #include <QPixmap>
 #include <QRadioButton>
+#include <QProgressBar>
 
 class GeneralWindow : public QMainWindow
 {
@@ -29,6 +30,8 @@ private:
     QWidget *taskWindow;
     QWidget *testwindow;
     QWidget *quiz;
+    QWidget *message;
+
 
     //option
 

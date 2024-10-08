@@ -18,14 +18,26 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     quiz.cpp \
-    registration.cpp
+    quiz_four.cpp \
+    quiz_tree.cpp \
+    quiz_two.cpp \
+    registration.cpp \
+    task2quiz1.cpp \
+    task2quiz2.cpp \
+    task2quiz3.cpp
 
 HEADERS += \
     connect.h \
     generalwindow.h \
     mainwindow.h \
     quiz.h \
-    registration.h
+    quiz_four.h \
+    quiz_tree.h \
+    quiz_two.h \
+    registration.h \
+    task2quiz1.h \
+    task2quiz2.h \
+    task2quiz3.h
 
 FORMS +=
 

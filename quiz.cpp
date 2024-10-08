@@ -1,6 +1,6 @@
 #include "quiz.h"
 
-Quiz::Quiz(QWidget *parent) : QWidget(parent), currentQuestionIndex(0) {
+Quiz::Quiz(QWidget *parent) : QWidget(parent), currentQuestionIndex(0), score(0) {
     setupQuestions();        // Добавляем вопросы
     createQuizInterface();   // Создаем интерфейс викторины
 }
@@ -111,17 +111,20 @@ void Quiz::loadQuestion() {
 void Quiz::handleAnswer() {
     int selectedOption = buttonGroup->checkedId();
     if (selectedOption == questions[currentQuestionIndex].correctAnswerIndex) {
-        QMessageBox::information(this, "Результат", "Верно! +5 очков");
+        QMessageBox::information(this, "Результат", "Верно!");
+        score+=5;  // Увеличиваем счет
     } else {
-        QMessageBox::information(this, "Результат", "Неверно. Попробуйте снова.");
+        QMessageBox::information(this, "Результат", "Неверно.");
     }
 
     currentQuestionIndex++;
 
     if (currentQuestionIndex < questions.size()) {
-        loadQuestion();  // Загружаем следующий вопрос
-    } else {
-        QMessageBox::information(this, "Результат", "Викторина завершена!\nПоздравляем!");
+        loadQuestion();      } else {
+
+        // Сообщение с итоговым результатом
+        QMessageBox::information(this, "Результат",
+                                 QString("Викторина завершена!\nВаш результат: %1 очков").arg(score));
         this->close();  // Закрыть окно викторины по завершению
     }
 }

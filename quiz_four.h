@@ -1,5 +1,5 @@
-#ifndef QUIZ_H
-#define QUIZ_H
+#ifndef QUIZFOUR_H
+#define QUIZFOUR_H
 
 #include <QWidget>
 #include <QLabel>
@@ -11,11 +11,11 @@
 #include <QVector>
 #include <QLayout>
 
-class Quiz : public QWidget {
+class QuizFour : public QWidget {
     Q_OBJECT
 
 public:
-    explicit Quiz(QWidget *parent = nullptr);
+    explicit QuizFour(QWidget *parent = nullptr);
 
 private:
     struct Question {

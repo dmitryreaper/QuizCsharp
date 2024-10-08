@@ -89,10 +89,10 @@ void StartWindow::onStartClicked() {
         }
 
         QString username = query.value("name").toString();
-        QString score;
 
         // Открываем новое окно
         GeneralWindow *generalWindow = new GeneralWindow(username);
+
         generalWindow->show();
 
         // Закрываем текущее окно
