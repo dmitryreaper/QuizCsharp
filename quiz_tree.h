@@ -1,5 +1,5 @@
-#ifndef QUIZ_H
-#define QUIZ_H
+#ifndef QUIZTREE_H
+#define QUIZTREE_H
 
 #include <QWidget>
 #include <QLabel>
@@ -11,11 +11,11 @@
 #include <QVector>
 #include <QLayout>
 
-class Quiz : public QWidget {
+class QuizTre : public QWidget {
     Q_OBJECT
 
 public:
-    explicit Quiz(QWidget *parent = nullptr);
+    explicit QuizTre(QWidget *parent = nullptr);
 
 private:
     struct Question {
@@ -40,6 +40,7 @@ private:
 
 private slots:
     void handleAnswer();              // Метод для обработки ответа на вопрос
+
 };
 
 #endif // QUIZ_H

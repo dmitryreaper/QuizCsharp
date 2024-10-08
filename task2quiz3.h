@@ -1,5 +1,5 @@
-#ifndef QUIZ_H
-#define QUIZ_H
+#ifndef TASK2QUIZ3_H
+#define TASK2QUIZ3_H
 
 #include <QWidget>
 #include <QLabel>
@@ -11,11 +11,11 @@
 #include <QVector>
 #include <QLayout>
 
-class Quiz : public QWidget {
+class Task2Quiz3 : public QWidget {
     Q_OBJECT
 
 public:
-    explicit Quiz(QWidget *parent = nullptr);
+    explicit Task2Quiz3(QWidget *parent = nullptr);
 
 private:
     struct Question {
@@ -26,13 +26,13 @@ private:
 
     QVector<Question> questions;      // Вектор вопросов
     int currentQuestionIndex;         // Индекс текущего вопроса
-
+    int score;
     QLabel *questionLabel;            // Метка для отображения текста вопроса
     QLabel *progressLabel;
     QVector<QRadioButton*> optionButtons;  // Вектор кнопок для вариантов ответов
     QButtonGroup *buttonGroup;        // Группа кнопок для управления переключением
     QPushButton *submitButton;        // Кнопка для отправки ответа
-    int score;
+
 
     void setupQuestions();            // Метод для добавления вопросов
     void createQuizInterface();       // Метод для создания интерфейса викторины
