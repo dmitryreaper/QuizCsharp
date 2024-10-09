@@ -31,13 +31,14 @@ private:
     QWidget *testwindow;
     QWidget *quiz;
     QWidget *message;
-
+    QWidget *helpWindow;
 
     //option
 
 private slots:
     void showAboutProg();
     void showAbout();
+
 };
 
 #endif // GENERALWINDOW_H

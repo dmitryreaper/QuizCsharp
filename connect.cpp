@@ -3,11 +3,13 @@
 #include <QApplication>
 #include <QWindow>
 #include "mainwindow.h"
+#include <QIcon>
 
 StartWindow::StartWindow(MainWindow *window) : registration(window){
 
     setWindowTitle("Окно входа");
     setFixedSize(300, 200);
+    setWindowIcon(QIcon(":/img/ico.png"));
     QApplication::setStyle("Fusion");
 
     QVBoxLayout *layout = new QVBoxLayout(this);

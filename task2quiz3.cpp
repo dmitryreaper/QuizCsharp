@@ -1,8 +1,12 @@
 #include "task2quiz3.h"
 
 Task2Quiz3::Task2Quiz3(QWidget *parent) : QWidget(parent), currentQuestionIndex(0), score(0) {
-    setupQuestions();      // Добавляем вопросы
-    createQuizInterface(); // Создаем интерфейс викторины
+    //Стильно модно молодёжно
+    setStyleSheet("QPushButton { background-color: #4CAF50; color: white; border-radius: 5px; padding: 10px; }"
+                  "QListWidget { border: 1px solid #ccc; border-radius: 5px; padding: 5px; }"
+                  "QLabel { color: #white; }");
+    setupQuestions();
+    createQuizInterface();
 }
 
 void Task2Quiz3::setupQuestions() {

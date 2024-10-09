@@ -1,8 +1,12 @@
 #include "quiz.h"
 
 Quiz::Quiz(QWidget *parent) : QWidget(parent), currentQuestionIndex(0), score(0) {
-    setupQuestions();        // Добавляем вопросы
-    createQuizInterface();   // Создаем интерфейс викторины
+    //Стильно модно молодёжно
+    setStyleSheet("QPushButton { background-color: #4CAF50; color: white; border-radius: 5px; padding: 10px; }"
+                  "QListWidget { border: 1px solid #ccc; border-radius: 5px; padding: 5px; }"
+                  "QLabel { color: #white; }");
+    setupQuestions();
+    createQuizInterface();
 }
 
 void Quiz::setupQuestions() {
@@ -58,7 +62,7 @@ void Quiz::createQuizInterface() {
     progressLabel->setFixedSize(300,20);
     layout->addWidget(progressLabel);
 
-    // Лейбл для вопроса
+
     questionLabel = new QLabel(this);
     questionLabel->setFixedSize(500,20);
     questionLabel->setFont(QFont("Arial", 14, QFont::Bold));
