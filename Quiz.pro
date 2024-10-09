@@ -14,6 +14,7 @@ ICON = img/app.ico
 
 SOURCES += \
     connect.cpp \
+    gamewindow.cpp \
     generalwindow.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
 
 HEADERS += \
     connect.h \
+    gamewindow.h \
     generalwindow.h \
     mainwindow.h \
     quiz.h \
@@ -39,7 +41,8 @@ HEADERS += \
     task2quiz2.h \
     task2quiz3.h
 
-FORMS +=
+FORMS += \
+    gamewindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
