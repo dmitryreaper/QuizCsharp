@@ -18,7 +18,7 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);  // Конструктор
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private:
@@ -29,9 +29,8 @@ private:
 private slots:
     void showAboutProgramm();
     void showAboutDialog();
-    void showRegistrationWindow();  // Слоты для показа окна
+    void showRegistrationWindow();
     void showStartWindow();
-
 };
 
 #endif

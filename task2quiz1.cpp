@@ -28,7 +28,7 @@ void Task2Quiz1::createQuizInterface() {
     layout->addWidget(progressLabel);
 
     questionLabel = new QLabel(this);
-    questionLabel->setFixedSize(800, 20);
+    questionLabel->setFixedSize(1000, 20);
     questionLabel->setFont(QFont("Arial", 14, QFont::Bold));
     layout->addWidget(questionLabel);
 
@@ -106,7 +106,6 @@ void Task2Quiz1::handleAnswer() {
         }
     }
 }
-
 
 // Функция для обновления таймера
 void Task2Quiz1::updateTimer() {

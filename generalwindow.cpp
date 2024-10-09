@@ -7,6 +7,7 @@
 #include "task2quiz1.h"
 #include "task2quiz2.h"
 #include "task2quiz3.h"
+#include "gamewindow.h"
 
 // General Window
 GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
@@ -21,7 +22,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     //Меню и кнопки в меню
     QMenuBar *menuBar = new QMenuBar(this);
     QMenu *Menu = new QMenu("Файл", this);
-    int score = 120;
+    int score = 240;
 
     QAction *exit = new QAction("Выход", this);
 
@@ -81,7 +82,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     // Устанавливаем минимальные и максимальные значения
     progressBar->setMinimum(0);
     progressBar->setMaximum(1000);
-    progressBar->setValue(120);
+    progressBar->setValue(score);
 
     // Устанавливаем кастомный стиль
     progressBar->setStyleSheet(R"(
@@ -186,11 +187,13 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             profileLabel->setStyleSheet("color: white;");
 
 
+
+
             ////////////////////Задание 1 ////////////////////
             QPushButton *taskbut1 = new QPushButton("Базовые знания языка C# - Типы данных, ветвления, функции, циклы", taskWindow);
             taskbut1->setFont(QFont("Arial", 14, QFont::Bold));
             taskbut1->setSizeIncrement(800,10);
-            taskbut1->move(10,40);
+            taskbut1->move(10,100);
             taskbut1->setStyleSheet("color: white;");
             connect(taskbut1, &QPushButton::clicked, this, [this,score]() {
                 if(testwindow == nullptr || !testwindow->isVisible()) {
@@ -219,11 +222,16 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
                     TestLabel->move(400, 10);
                     TestLabel->setStyleSheet("color: white;");
 
+                    QLabel *test = new QLabel("Ответы на вопросы c вариантами ответов", testwindow);
+                    test->setFont(QFont("Arial", 12, QFont::Bold));
+                    test->move(10, 60);
+                    test->setStyleSheet("color: white;");
+
                     ////////////////////Тема 1 ////////////////////
                     QPushButton *taskbut2 = new QPushButton("Основы языка", testwindow);
                     taskbut2->setFont(QFont("Arial", 14, QFont::Bold));
                     taskbut2->setSizeIncrement(800,10);
-                    taskbut2->move(10,40);
+                    taskbut2->move(10,100);
                     taskbut2->setStyleSheet("color: white;");
                     connect(taskbut2, &QPushButton::clicked, this, [this, score]() {
                         if (quiz == nullptr || !quiz->isVisible()) {
@@ -244,12 +252,12 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
                     QPushButton *taskbut1 = new QPushButton("Типы данных", testwindow);
                     taskbut1->setFont(QFont("Arial", 14, QFont::Bold));
                     taskbut1->setSizeIncrement(800,10);
-                    taskbut1->move(10,80);
+                    taskbut1->move(10,150);
                     taskbut1->setStyleSheet("color: white;");
                     connect(taskbut1, &QPushButton::clicked, this, [this, score]() {
                         if (quiz == nullptr || !quiz->isVisible()) {
                             if(testwindow!= nullptr || testwindow->isVisible()){testwindow->close(); quiz=nullptr;}
-                            quiz = new QuizTwo(this);
+                            quiz = new GameWindow(this);
                             quiz->setFixedSize(1000, 600);
                             quiz->move(150, 100);
                             quiz->show();
@@ -264,7 +272,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
                     QPushButton *taskbut3 = new QPushButton("Ветвления", testwindow);
                     taskbut3->setFont(QFont("Arial", 14, QFont::Bold));
                     taskbut3->setSizeIncrement(800,10);
-                    taskbut3->move(10,120);
+                    taskbut3->move(10,200);
                     taskbut3->setStyleSheet("color: white;");
                     connect(taskbut3, &QPushButton::clicked, this, [this]() {
                         if (quiz == nullptr || !quiz->isVisible()) {
@@ -284,7 +292,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
                     QPushButton *taskbut4 = new QPushButton("Циклы", testwindow);
                     taskbut4->setFont(QFont("Arial", 14, QFont::Bold));
                     taskbut4->setSizeIncrement(800,10);
-                    taskbut4->move(10,160);
+                    taskbut4->move(10,250);
                     taskbut4->setStyleSheet("color: white;");
                     connect(taskbut4, &QPushButton::clicked, this, [this]() {
                         if (quiz == nullptr || !quiz->isVisible()) {
@@ -313,7 +321,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             QPushButton *taskbut2 = new QPushButton("Написание простых консольных приложений", taskWindow);
             taskbut2->setFont(QFont("Arial", 14, QFont::Bold));
             taskbut2->setSizeIncrement(800,10);
-            taskbut2->move(10,80);
+            taskbut2->move(10,150);
             taskbut2->setStyleSheet("color: white;");
             connect(taskbut2, &QPushButton::clicked, this, [this,score]() {
                 if(testwindow == nullptr || !testwindow->isVisible()) {
@@ -334,9 +342,9 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
                     testwindow->move(150,100);
                     //testwindow->setStyleSheet("background-color: rgba(255, 255, 255, 50);");
 
-                    QLabel *TestLabel = new QLabel("Выполнение заданий с вводом с клавиатуры и на время", testwindow);
+                    QLabel *TestLabel = new QLabel("Ответы на вопросы с вводом с клавиатуры", testwindow);
                     TestLabel->setFont(QFont("Arial", 12, QFont::Bold));
-                    TestLabel->move(70, 60);
+                    TestLabel->move(10, 60);
                     TestLabel->setStyleSheet("color: white;");
 
                     QLabel *job = new QLabel("Написание простых консольных приложений", testwindow);
@@ -418,7 +426,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             QPushButton *taskbut3 = new QPushButton("Создание оконных приложений ", taskWindow);
             taskbut3->setFont(QFont("Arial", 14, QFont::Bold));
             taskbut3->setSizeIncrement(800,10);
-            taskbut3->move(10,120);
+            taskbut3->move(10,200);
             taskbut3->setStyleSheet("color: white;");
             connect(taskbut3, &QPushButton::clicked, this, [this]() {
                 QMessageBox::about(this, "Внимание", "Для открытия этого задания у вас должно быть 2000 очков\nПройдите предыдущие задния для того чтобы получить очки");
@@ -431,7 +439,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             QPushButton *taskbut4 = new QPushButton("Продвинутый уровень создания оконных приложений без использования конструктора", taskWindow);
             taskbut4->setFont(QFont("Arial", 14, QFont::Bold));
             taskbut4->setSizeIncrement(800,10);
-            taskbut4->move(10,160);
+            taskbut4->move(10,250);
             taskbut4->setStyleSheet("color: white;");
             connect(taskbut4, &QPushButton::clicked, this, [this]() {
                 QMessageBox::about(this, "Внимание", "Для открытия этого задания у вас должно быть 5000 очков\nПройдите предыдущие задния для того чтобы получить очки");
@@ -442,7 +450,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             QPushButton *taskbut5 = new QPushButton("Использование С# в Web - Написание приложений для браузера", taskWindow);
             taskbut5->setFont(QFont("Arial", 14, QFont::Bold));
             taskbut5->setSizeIncrement(800,10);
-            taskbut5->move(10,200);
+            taskbut5->move(10,300);
             taskbut5->setStyleSheet("color: white;");
             connect(taskbut5, &QPushButton::clicked, this, [this]() {
                 QMessageBox::about(this, "Внимание", "Для открытия этого задания у вас должно быть 8000 очков\nПройдите предыдущие задния для того чтобы получить очки");
