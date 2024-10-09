@@ -6,6 +6,7 @@ RegistrationWindow::RegistrationWindow()
 {
     setWindowTitle("Регистрация");
     setFixedSize(300, 200);
+    setWindowIcon(QIcon(":/img/ico.png"));
     QApplication::setStyle("Fusion");
 
     QVBoxLayout *layout = new QVBoxLayout(this);

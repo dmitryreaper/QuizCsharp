@@ -1,6 +1,10 @@
 #include "quiz_four.h"
 
 QuizFour::QuizFour(QWidget *parent) : QWidget(parent), currentQuestionIndex(0), score(0) {
+    //Стильно модно молодёжно
+    setStyleSheet("QPushButton { background-color: #4CAF50; color: white; border-radius: 5px; padding: 10px; }"
+                  "QListWidget { border: 1px solid #ccc; border-radius: 5px; padding: 5px; }"
+                  "QLabel { color: #white; }");
     setupQuestions();      // Добавляем вопросы
     createQuizInterface(); // Создаем интерфейс викторины
 }

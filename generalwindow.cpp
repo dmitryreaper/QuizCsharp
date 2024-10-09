@@ -1,13 +1,12 @@
 #include "generalwindow.h"
 #include "quiz.h"
-#include "quiz_two.h"
 #include "quiz_tree.h"
 #include "quiz_four.h"
-
 #include "task2quiz1.h"
 #include "task2quiz2.h"
 #include "task2quiz3.h"
 #include "gamewindow.h"
+#include <QScrollArea>
 
 // General Window
 GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
@@ -18,6 +17,9 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     QFont font("Arial", 12, QFont::Bold);
 
     this->setFixedSize(1280,720);
+    setWindowIcon(QIcon(":/img/ico.png"));
+
+
 
     //Меню и кнопки в меню
     QMenuBar *menuBar = new QMenuBar(this);
@@ -553,7 +555,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             if(quiz != nullptr && quiz->isVisible()){
                         quiz->close();
             }
-            // Создаем окно профиля с теми же размерами и положением, что и taskwindow
+
             achivWindow = new QWidget(this);
             achivWindow->setFixedSize(1000, 600);
             achivWindow->move(150,100);
@@ -580,28 +582,83 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
 }
 
 
-QString igs = ":/img/logo.png";
-
 QString str = QString(
                    "<center><h2>Программа Виртуальный квест по основам C#</h2></center>"
-                   "<center><p><img src='%1' width='64' height='64'></p></center>"
                    "<center><p>Version 1.0</p></center>"
                    "<center><p>Autor: Dubnovitskiy Dmitry</p></center>"
                    "<center><p>Github: <a href='https://github.com/dmitryreaper'>dmitryreaper</a></p></center>"
-                   ).arg(igs);
+                   );
 
-QString help = QString(
-                   "<center><h2>Справка приложения</h2></center>"
-                   "<center><p><img src='%1' width='64' height='64'></p></center>"
-                   "<center><p>Version 1.0</p></center>"
-                   "<center><p>Autor: Dubnovitskiy Dmitry</p></center>"
-                   "<center><p>Github: <a href='https://github.com/dmitryreaper'>dmitryreaper</a></p></center>"
-                   ).arg(igs);
+
 //function
 void GeneralWindow::showAbout() {
     QMessageBox::about(this, "О программе", str); // О программе
 }
 
 void GeneralWindow::showAboutProg() {
-    QMessageBox::about(this, "Использование", "<center>Справка по использованию программы</center>"); // Cправка
+    //ПОЭМА
+    QString help = QString(
+                   "<center><h2>Справка приложения</h2></center>"
+                   "<h3>Главные элементы интерфейса</h3>"
+                   "<p><b>Кнопка \"Задания\"</b><br>"
+                   "Позволяет получить доступ к списку заданий. Каждое задание требует определённого количества очков для открытия. Очки можно заработать, проходя предыдущие задания:<br>"
+                   "- Задание 1: Теоретические основы C# (0 очков).<br>"
+                   "- Задание 2: Практика написания консольных приложений (500 очков).<br>"
+                   "- Задание 3: Создание оконных приложений (2000 очков).<br>"
+                   "- Задание 4: Продвинутый уровень создания оконных приложений без конструктора (5000 очков).<br>"
+                   "- Задание 5: Использование C# в веб-разработке (8000 очков).<br>"
+                   "Чтобы открыть задание, нажмите на его название. Если у вас недостаточно очков, появится сообщение с информацией о необходимом количестве.</p>"
+                   "<p><b>Кнопка \"Профиль\"</b><br>"
+                   "В разделе \"Профиль\" вы можете посмотреть информацию о вашем аккаунте: имя пользователя, email и текущий уровень очков.</p>"
+                   "<p><b>Кнопка \"Достижения\"</b><br>"
+                   "В этом разделе отображаются ваши достижения в приложении. После выполнения заданий вы будете зарабатывать различные награды и титулы.</p>"
+                   "<p><b>Кнопка \"О программе\"</b><br>"
+                   "В этом окне представлена информация о приложении, его версии, авторе и ссылки на исходный код на GitHub.</p>"
+                   "<p><b>Кнопка \"Справка\"</b><br>"
+                   "Здесь вы можете ознакомиться с инструкциями по использованию приложения.</p>"
+                   "<h3>Как заработать очки</h3>"
+                   "<p>1. Выполняйте задания в указанной последовательности.<br>"
+                   "2. Чем сложнее задание, тем больше очков вы получаете за его выполнение.<br>"
+                   "3. Прогресс можно отслеживать в разделе \"Профиль\".</p>"
+                   "<h3>Технические требования</h3>"
+                   "<p>Операционная система: Windows, Linux, macOS.<br>"
+                   "Установленный Qt для запуска приложения.</p>"
+                   "<h3>Важно!</h3>"
+                   "<p>Чтобы продвигаться по заданиям, убедитесь, что у вас достаточно очков для открытия следующих уровней. Для открытия продвинутых уровней и использования всех возможностей приложения потребуется выполнить предыдущие задания.</p>"
+                   "<p>Если у вас возникли вопросы или проблемы с приложением, пожалуйста, обращайтесь к разработчику через "
+                   "<a href='https://github.com/dmitryreaper'>GitHub</a>.</p>");
+
+    helpWindow = new QWidget(this);
+    helpWindow->setFixedSize(1000, 600);
+    helpWindow->move(150, 100);
+    //Стильно модно молодёжно
+    helpWindow->setStyleSheet("QPushButton { background-color: #4CAF50; color: white; border-radius: 5px; padding: 10px; }"
+                  "QListWidget { border: 1px solid #ccc; border-radius: 5px; padding: 5px; }"
+                  "QLabel { color: #white; }");
+
+    QScrollArea *scrollArea = new QScrollArea(helpWindow);
+    scrollArea->setWidgetResizable(true); // Делаем его резиновым
+
+    QLabel *helpLabel = new QLabel(helpWindow);
+    helpLabel->setText(help);
+    helpLabel->setWordWrap(true);
+    helpLabel->setFont(QFont("Arial", 12, QFont::Bold));
+    helpLabel->setOpenExternalLinks(true);
+    scrollArea->setWidget(helpLabel);
+
+    // Кнопка закрытия
+    QPushButton *closehelp = new QPushButton("Закрыть", helpWindow);
+    closehelp->setFont(QFont("Arial", 12, QFont::Bold));
+    connect(closehelp, &QPushButton::clicked, this, [this]() {
+        helpWindow->close();
+    });
+
+    // Устанавливаем layout для окна справки
+    QVBoxLayout *layout = new QVBoxLayout(helpWindow);
+    layout->addWidget(scrollArea);
+    layout->addWidget(closehelp);
+    helpWindow->setLayout(layout);
+    helpWindow->setWindowTitle("Справка");
+
+    helpWindow->show();
 }
