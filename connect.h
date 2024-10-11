@@ -32,6 +32,7 @@ private:
     QLineEdit *passwordEdit;
     QLineEdit *emailEdit;
     MainWindow *registration;
+    QString score;
 };
 
 #endif

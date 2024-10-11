@@ -23,6 +23,7 @@ SOURCES += \
     quiz_tree.cpp \
     quiz_two.cpp \
     registration.cpp \
+    resultwindown.cpp \
     task2quiz1.cpp \
     task2quiz2.cpp \
     task2quiz3.cpp
@@ -37,6 +38,7 @@ HEADERS += \
     quiz_tree.h \
     quiz_two.h \
     registration.h \
+    resultwindown.h \
     task2quiz1.h \
     task2quiz2.h \
     task2quiz3.h

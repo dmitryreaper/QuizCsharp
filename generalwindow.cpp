@@ -7,25 +7,27 @@
 #include "task2quiz3.h"
 #include "gamewindow.h"
 #include <QScrollArea>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
 
 // General Window
-GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
+GeneralWindow::GeneralWindow(const QString &username, const QString &email, int &scores, QWidget *parent)
     : QMainWindow(parent), profileWindow(nullptr), achivWindow(nullptr),
-    taskWindow(nullptr), quiz(nullptr), message(nullptr)
+    taskWindow(nullptr), quiz(nullptr), mess(nullptr)
 {
     setWindowTitle("Quiz");
     QFont font("Arial", 12, QFont::Bold);
 
     this->setFixedSize(1280,720);
     setWindowIcon(QIcon(":/img/ico.png"));
-
-
+    user = username;
+    emai = email;
+    score = scores;
 
     //Меню и кнопки в меню
     QMenuBar *menuBar = new QMenuBar(this);
     QMenu *Menu = new QMenu("Файл", this);
-    int score = 240;
-
     QAction *exit = new QAction("Выход", this);
 
     Menu->addSeparator();  // Разделитель
@@ -52,6 +54,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     // background color
     QLabel *label = new QLabel(this);
     QPixmap pixmap(":/img/back.jpg");
+
     label->setPixmap(pixmap);
     setCentralWidget(label);
 
@@ -61,7 +64,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     Name->move(50,17);
     Name->setStyleSheet("QLabel { color : white; }");
 
-    QLabel *Level = new QLabel("Очки игрока: " + QString::number(score), this);
+    Level = new QLabel("Очки игрока: " + QString::number(scores), this);
     Level->setFont(font);
     Level->resize(200,50);
     Level->move(220,17);
@@ -74,7 +77,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     Progress->setStyleSheet("QLabel { color : white; }");
 
     // Создаем прогресс-бар
-    QProgressBar *progressBar = new QProgressBar(this);
+    progressBar = new QProgressBar(this);
 
     // Устанавливаем вертикальную ориентацию
     progressBar->resize(150,25);
@@ -84,7 +87,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     // Устанавливаем минимальные и максимальные значения
     progressBar->setMinimum(0);
     progressBar->setMaximum(1000);
-    progressBar->setValue(score);
+    progressBar->setValue(scores);
 
     // Устанавливаем кастомный стиль
     progressBar->setStyleSheet(R"(
@@ -109,7 +112,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     Message->setStyleSheet("background-color: rgba(255, 255, 255, 100);");  // Полупрозрачный белый фон
     Message->setStyleSheet("QLabel { color : white; }");
     connect(Message, &QPushButton::clicked, this, [this]() {
-        if (message == nullptr || !message->isVisible()) {
+        if (mess == nullptr) {
 
             if (profileWindow != nullptr && profileWindow->isVisible()) {
                 profileWindow->close();
@@ -126,28 +129,30 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             if(achivWindow != nullptr && achivWindow->isVisible()){
                         achivWindow->close();
             }
+            if(helpWindow != nullptr && helpWindow->isVisible()){
+                        helpWindow->close();
+            }
             // Создаем окно профиля с теми же размерами и положением, что и taskwindow
-            message = new QWidget(this);
-            message->setFixedSize(1000, 600);
-            message->move(150,100);
+            mess = new QWidget(this);
+            mess->setFixedSize(1000, 600);
+            mess->move(150,100);
             //achivWindow->setStyleSheet("background-color: rgba(255, 255, 255, 50);");
 
-            QLabel *profileLabel = new QLabel("Уведомления пользователя", message);
+            QLabel *profileLabel = new QLabel("Уведомления пользователя", mess);
             profileLabel->setFont(QFont("Arial", 14, QFont::Bold));
             profileLabel->move(400, 10);
             profileLabel->setStyleSheet("color: white;");
 
-            QLabel *Achiv = new QLabel("У вас пока нет уведомлений", message);
-            Achiv->setFont(QFont("Arial", 14, QFont::Bold));
-            Achiv->move(100,50);
-            Achiv->setStyleSheet("color : white;");
+            QLabel *Messages = new QLabel("У вас пока нет уведомлений", mess);
+            Messages->setFont(QFont("Arial", 14, QFont::Bold));
+            Messages->move(100,50);
+            Messages->setStyleSheet("color : white;");
 
-            message->show();
+            mess->show();
         }
         else {
-            message->show();
-            message->raise();
-            message->activateWindow();
+            mess->raise();
+            mess->activateWindow();
         }
     });
 
@@ -156,9 +161,8 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     Task->setFont(font);
     Task->resize(120,25);
     Task->move(1000,30);
-    Task->setStyleSheet("background-color: rgba(255, 255, 255, 100);");  // Полупрозрачный белый фон
     Task->setStyleSheet("QLabel { color : white; }");
-    connect(Task, &QPushButton::clicked, this, [this, score]() {
+    connect(Task, &QPushButton::clicked, this, [this, username,email]() {
         if (taskWindow == nullptr || !taskWindow->isVisible()) {
 
             if (profileWindow != nullptr && profileWindow->isVisible()) {
@@ -170,11 +174,11 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             if (testwindow != nullptr && testwindow->isVisible()) {
                 testwindow->close();
             }
-            if (message != nullptr && message->isVisible()) {
-                message->close();
+            if (mess != nullptr && mess->isVisible()) {
+                mess->close();
             }
             if (quiz != nullptr && quiz->isVisible()){
-                        quiz->close();
+                quiz->close();
             }
 
             // Создаем окно профиля с теми же размерами и положением, что и taskwindow
@@ -185,11 +189,8 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
 
             QLabel *profileLabel = new QLabel("Выбор задания", taskWindow);
             profileLabel->setFont(QFont("Arial", 14, QFont::Bold));
-            profileLabel->move(400, 10);
+            profileLabel->move(400, 40);
             profileLabel->setStyleSheet("color: white;");
-
-
-
 
             ////////////////////Задание 1 ////////////////////
             QPushButton *taskbut1 = new QPushButton("Базовые знания языка C# - Типы данных, ветвления, функции, циклы", taskWindow);
@@ -197,7 +198,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             taskbut1->setSizeIncrement(800,10);
             taskbut1->move(10,100);
             taskbut1->setStyleSheet("color: white;");
-            connect(taskbut1, &QPushButton::clicked, this, [this,score]() {
+            connect(taskbut1, &QPushButton::clicked, this, [this, username,email]() {
                 if(testwindow == nullptr || !testwindow->isVisible()) {
 
                     if(profileWindow != nullptr && profileWindow->isVisible()){
@@ -206,8 +207,8 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
                     if(taskWindow != nullptr && taskWindow->isVisible()){
                         taskWindow->close();
                     }
-                    if (message != nullptr && message->isVisible()) {
-                        message->close();
+                    if (mess != nullptr && mess->isVisible()) {
+                        mess->close();
                     }
                     if(achivWindow != nullptr && achivWindow->isVisible()){
                         achivWindow->close();
@@ -235,7 +236,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
                     taskbut2->setSizeIncrement(800,10);
                     taskbut2->move(10,100);
                     taskbut2->setStyleSheet("color: white;");
-                    connect(taskbut2, &QPushButton::clicked, this, [this, score]() {
+                    connect(taskbut2, &QPushButton::clicked, this, [this]() {
                         if (quiz == nullptr || !quiz->isVisible()) {
                             if(testwindow!= nullptr || testwindow->isVisible()){testwindow->close();}
                             quiz = new Quiz(this);
@@ -244,7 +245,6 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
                             quiz->show();
 
                         } else {
-                            quiz->show();
                             quiz->raise();
                             quiz->activateWindow();
                         }
@@ -256,14 +256,23 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
                     taskbut1->setSizeIncrement(800,10);
                     taskbut1->move(10,150);
                     taskbut1->setStyleSheet("color: white;");
-                    connect(taskbut1, &QPushButton::clicked, this, [this, score]() {
+                    connect(taskbut1, &QPushButton::clicked, this, [this, username,email]() {
+                        // Проверяем, не открыта ли уже викторина
                         if (quiz == nullptr || !quiz->isVisible()) {
-                            if(testwindow!= nullptr || testwindow->isVisible()){testwindow->close(); quiz=nullptr;}
-                            quiz = new GameWindow(this);
+                            // Если окно викторины открыто, закрываем его
+                            if (testwindow != nullptr && testwindow->isVisible()) {
+                                testwindow->close();
+                                quiz = nullptr;
+                            }
+                            // Создаем новое окно GameWindow
+                            GameWindow *gameWindow = new GameWindow(this);  // Явное создание GameWindow
+                            connect(gameWindow, &GameWindow::updateScore, this, &GeneralWindow::updateScore);
+                            quiz = gameWindow;
                             quiz->setFixedSize(1000, 600);
                             quiz->move(150, 100);
                             quiz->show();
                         } else {
+                            // Если окно уже открыто, выводим его на передний план
                             quiz->show();
                             quiz->raise();
                             quiz->activateWindow();
@@ -325,7 +334,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             taskbut2->setSizeIncrement(800,10);
             taskbut2->move(10,150);
             taskbut2->setStyleSheet("color: white;");
-            connect(taskbut2, &QPushButton::clicked, this, [this,score]() {
+            connect(taskbut2, &QPushButton::clicked, this, [this]() {
                 if(testwindow == nullptr || !testwindow->isVisible()) {
 
                     if(profileWindow != nullptr && profileWindow->isVisible()){
@@ -360,7 +369,7 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
                     taskbut2->setSizeIncrement(800,10);
                     taskbut2->move(10,100);
                     taskbut2->setStyleSheet("color: white;");
-                    connect(taskbut2, &QPushButton::clicked, this, [this,score]() {
+                    connect(taskbut2, &QPushButton::clicked, this, [this]() {
                         if (quiz == nullptr || !quiz->isVisible()) {
                             if(testwindow!= nullptr || testwindow->isVisible()){testwindow->close();}
                             quiz = new Task2Quiz1(this);
@@ -474,17 +483,16 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     Profile->setFont(font);
     Profile->resize(120,25);
     Profile->move(850,30);
-    Profile->setStyleSheet("background-color: rgba(255, 255, 255, 50);");  // Полупрозрачный белый фон
     Profile->setStyleSheet("QLabel { color : white; }");
 
-    connect(Profile, &QPushButton::clicked, this, [this, score]() {
+    connect(Profile, &QPushButton::clicked, this, [this, username, email, scores]() {
         if (profileWindow == nullptr || !profileWindow->isVisible()) {
 
             if (achivWindow != nullptr && achivWindow->isVisible()) {
                 achivWindow->close();
             }
-            if (message != nullptr && message->isVisible()) {
-                message->close();
+            if (mess != nullptr && mess->isVisible()) {
+                mess->close();
             }
             if (taskWindow != nullptr && taskWindow->isVisible()) {
                 taskWindow->close();
@@ -506,17 +514,17 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             profileLabel->move(400, 10);
             profileLabel->setStyleSheet("color: white;");
 
-            QLabel *Username = new QLabel("Имя: dima", profileWindow);
+            QLabel *Username = new QLabel("Имя: " + username, profileWindow);
             Username->setFont(QFont("Arial", 14, QFont::Bold));
             Username->move(100,50);
             Username->setStyleSheet("color : white;");
 
-            QLabel *Email = new QLabel("Email: dima@mail.com" , profileWindow);
+            QLabel *Email = new QLabel("Email: " + email , profileWindow);
             Email->setFont(QFont("Arial", 14, QFont::Bold));
             Email->move(100,100);
             Email->setStyleSheet("color : white;");
 
-            QLabel *Level = new QLabel("Очки игрока: " + QString::number(score), profileWindow);
+            QLabel *Level = new QLabel("Очки игрока: " + QString::number(scores), profileWindow);
             Level->setFont(QFont("Arial", 14, QFont::Bold));
             Level->move(100,150);
             Level->setStyleSheet("color : white;");
@@ -535,7 +543,6 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
     Achiv->setFont(font);
     Achiv->resize(120,25);
     Achiv->move(1150,30);
-    Achiv->setStyleSheet("background-color: rgba(255, 255, 255, 100);");  // Полупрозрачный белый фон
     Achiv->setStyleSheet("QLabel { color : white; }");
     connect(Achiv, &QPushButton::clicked, this, [this]() {
         if (achivWindow == nullptr || !achivWindow->isVisible()) {
@@ -543,23 +550,22 @@ GeneralWindow::GeneralWindow(const QString &username,  QWidget *parent)
             if (profileWindow != nullptr && profileWindow->isVisible()) {
                 profileWindow->close();
             }
-            if (taskWindow != nullptr && taskWindow->isVisible()) {
+            else if (taskWindow != nullptr && taskWindow->isVisible()) {
                 taskWindow->close();
             }
-            if (message != nullptr && message->isVisible()) {
-                message->close();
+            else if (mess != nullptr && mess->isVisible()) {
+                mess->close();
             }
-            if (testwindow != nullptr && testwindow->isVisible()) {
+            else if (testwindow != nullptr && testwindow->isVisible()) {
                 testwindow->close();
             }
-            if(quiz != nullptr && quiz->isVisible()){
+            else if(quiz != nullptr && quiz->isVisible()){
                         quiz->close();
             }
 
             achivWindow = new QWidget(this);
             achivWindow->setFixedSize(1000, 600);
             achivWindow->move(150,100);
-            //achivWindow->setStyleSheet("background-color: rgba(255, 255, 255, 50);");
 
             QLabel *profileLabel = new QLabel("Достижения пользователя", achivWindow);
             profileLabel->setFont(QFont("Arial", 14, QFont::Bold));
@@ -594,6 +600,68 @@ QString str = QString(
 void GeneralWindow::showAbout() {
     QMessageBox::about(this, "О программе", str); // О программе
 }
+
+void GeneralWindow::saveScoreToDatabase(const QString &username, const QString &email, int score) {
+    // Подключение к базе данных
+    QSqlDatabase dbs = QSqlDatabase::database("qt_sql_default_connection");
+    if (!dbs.isOpen()) {
+        dbs = QSqlDatabase::addDatabase("QSQLITE");
+        dbs.setDatabaseName("C:/Users/Dmitry/use.db");
+
+        if (!dbs.open()) {
+            qDebug() << "Error opening database:" << dbs.lastError().text();
+            QMessageBox::warning(this, "Ошибка", "Ошибка открытия базы данных.");
+            return;
+        }
+    }
+
+    QSqlQuery query;
+
+    // Проверяем, существует ли пользователь
+    query.prepare("SELECT id FROM users WHERE name = :name AND email = :email");
+    query.bindValue(":name", username);
+    query.bindValue(":email", email);
+
+    if (!query.exec()) {
+        QMessageBox::warning(this, "Ошибка", "Ошибка выполнения запроса: " + query.lastError().text());
+        return;
+    }
+
+    // Если пользователь существует, обновляем его результат
+    if (query.next()) {
+        query.prepare("UPDATE users SET score = :score WHERE name = :name AND email = :email");
+        query.bindValue(":score", score);
+        query.bindValue(":name", username);
+        query.bindValue(":email", email);
+
+        if (query.exec()) {
+            QMessageBox::information(this, "Обновление", "Результат обновлен успешно!");
+        } else {
+            QMessageBox::warning(this, "Ошибка", "Ошибка обновления пользователя: " + query.lastError().text());
+        }
+    } else {
+        // Если пользователь не существует, добавляем его в базу данных
+        query.prepare("INSERT INTO users (name, email, score) VALUES (:name, :email, :score)");
+        query.bindValue(":name", username);
+        query.bindValue(":email", email);
+        query.bindValue(":score", score);
+
+        if (query.exec()) {
+            QMessageBox::information(this, "Регистрация", "Пользователь добавлен успешно!");
+        } else {
+            QMessageBox::warning(this, "Ошибка", "Ошибка добавления пользователя в базу данных: " + query.lastError().text());
+        }
+    }
+}
+
+void GeneralWindow::updateScore(int points) {
+    score += points;  // Увеличиваем очки
+    progressBar->setValue(score);  // Обновляем прогресс-бар
+    Level->setText("Очки игрока: " + QString::number(score));  // Обновляем отображение очков
+    saveScoreToDatabase(user,emai, score);
+}
+
+
 
 void GeneralWindow::showAboutProg() {
     //ПОЭМА

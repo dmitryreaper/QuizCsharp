@@ -32,6 +32,10 @@ private:
     // Индекс текущего задания и общее количество заданий
     int currentTaskIndex;
     int totalTasks;
+    int correctAnswersCount = 0; // Количество правильных ответов
+
+signals:
+    void updateScore(int points);
 };
 
 #endif // MATCHINGWIDGET_H
