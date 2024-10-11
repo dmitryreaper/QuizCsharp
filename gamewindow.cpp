@@ -117,11 +117,12 @@ void GameWindow::checkAnswers(QListWidget *answersList) {
 }
 
 void GameWindow::nextTask() {
-    // Проверяем, есть ли еще задания
     if (currentTaskIndex < totalTasks - 1) {
         currentTaskIndex++;
         setupTask();
     } else {
+        // Когда задания закончились, отправляем сигнал на обновление очков
+        emit updateScore(100);
         QMessageBox::information(this, "Конец", "Вы завершили все задания!");
         this->close();
     }

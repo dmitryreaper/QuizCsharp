@@ -56,7 +56,7 @@ void StartWindow::onStartClicked() {
     QSqlDatabase db = QSqlDatabase::database("qt_sql_default_connection");
     if (!db.isOpen()) {
         db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("C:/Users/Dmitry/users.db");
+        db.setDatabaseName("C:/Users/Dmitry/use.db");
 
         if (!db.open()) {
             qDebug() << "Error opening database:" << db.lastError().text();
@@ -70,7 +70,7 @@ void StartWindow::onStartClicked() {
 
     // Проверяем наличие пользователя в базе данных
     QSqlQuery query;
-    query.prepare("SELECT name, email, password FROM users WHERE name = :name AND email = :email AND password = :password;");
+    query.prepare("SELECT name, email, password, score FROM users WHERE name = :name AND email = :email AND password = :password;");
     query.bindValue(":name", username);
     query.bindValue(":email", email);
     query.bindValue(":password", password);
@@ -91,9 +91,11 @@ void StartWindow::onStartClicked() {
         }
 
         QString username = query.value("name").toString();
+        QString email = query.value("email").toString();
+        int score = query.value("score").toInt();
 
         // Открываем новое окно
-        GeneralWindow *generalWindow = new GeneralWindow(username);
+        GeneralWindow *generalWindow = new GeneralWindow(username, email, score);
 
         generalWindow->show();
 
